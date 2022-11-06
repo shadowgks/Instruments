@@ -9,6 +9,10 @@
     <!-- BEGIN Bootstrap style-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- END Bootstrap style-->
+
+    <!-- BEGIN Bootstrap icons-->
+    <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
+    <!-- END Bootstrap icons-->
     <!-- =============================================================== -->
 </head>
 <body>
@@ -37,7 +41,7 @@
               </li>
             </ul>
             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                <a href="#" class="btn text-dark rounded-0 px-4" style="border: 1px solid #E1B09E;">Sign In</a>
+                <a href="#" class="btn text-dark border-secondary rounded-0 px-4">Sign In</a>
                 <a href="#" class="btn btn-dark rounded-0 px-4">Sign Up</a>
               </div>
           </div>
@@ -105,17 +109,74 @@
     <!-- END SERVICES -->
 
     <!-- BEGIN ABOUT US -->
-    <div class="py-5 bg-black text-white">
+    <section class="py-5 bg-black text-white">
         <div class="container">
             <h1 class="text-center pb-5">ABOUT US</h1>
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md">
                     <img src="/assets/img/svg/about_us.svg" alt="">
                 </div>
-                <div class="col-md"></div>
+                <div class="col-md">
+                  <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi eos culpa ducimus maiores doloremque deserunt voluptatibus vitae, officia inventore laborum rem aperiam provident illum reiciendis voluptas ipsam cum sapiente cumque.</p>
+                  <a href="#" class="btn text-white rounded-0 w-50" style="border: 1px solid #E1B09E;">Learn More</a>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- BEGIN CONTACT US -->
+    <section id="contact" class="contact py-5">
+      <div class="container">
+          <h1 class="text-center pb-5">CONTACT US</h1>
+        <div class="row">
+          <div class="col" data-aos="fade-left">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="text-center">
+                  <button class="btn btn-dark rounded-0" type="submit">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END CONTACT US -->
+
+    <!-- BEGIN FOOTER -->
+    <footer id="footer" class="bg-black text-white text-center">
+      <div class="container py-5">
+        <h3>INSTRUMENTS</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt maiores aspernatur ut veniam aperiam, esse, adipisci autem quis possimus iure animi qui repellat ipsum beatae ratione! Omnis atque cumque provident?.</p>
+        <div class="social-links">
+          <a href="#" style="color:#E1B09E;"><i class="display-5 px-4 bi bi-twitter"></i></a>
+          <a href="#" style="color:#E1B09E;"><i class="display-5 px-4 bi bi-facebook"></i></a>
+          <a href="#" style="color:#E1B09E;"><i class="display-5 px-4 bi bi-instagram"></i></a>
+          <a href="#" style="color:#E1B09E;"><i class="display-5 px-4 bi bi-skype"></i></a>
+          <a href="#" style="color:#E1B09E;"><i class="display-5 px-4 bi bi-linkedin"></i></a>
+        </div>
+        <div class="copyright pt-5">
+          &copy; Copyright <strong><span>SAAD MOUMOU</span></strong>. YOUCODE
+        </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END FOOTER -->
+
     <!-- END ABOUT US -->
 
     <!-- END APP -->
