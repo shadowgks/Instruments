@@ -82,11 +82,136 @@
 
     <!-- BEGIN Instruments -->
     <section class="py-5">
-      <div class="container min-vh-100">
-        
+      <div class="container">
+        <div class="row pb-4">
+        <!-- BEGIN Button trigger modal -->
+          <div class="d-grid gap-2">
+            <button class="btn btn-dark rounded-0 shadow" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              ADD <i class="bi bi-plus-square"></i></i></button>
+          </div>
+        <!-- END Btn add -->
+        </div>
+        <div class="row d-flex justify-content-center">
+          <form class="d-flex w-50" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
       </div>
     </section>
+
+    <!-- BEGIN Card Instrument -->
+    <section class="pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md col-sm-6 pb-3">
+            <div class="card shadow">
+              <img src="" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-dark">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md col-sm-6 pb-3">
+            <div class="card shadow">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-dark">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md col-sm-6 pb-3">
+            <div class="card shadow">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-dark">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md col-sm-6 pb-3">
+            <div class="card shadow">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-dark">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END Card Instrument -->
     <!-- END Instruments -->
+
+    <!-- BEGIN Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">INSTRUMENTS</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- BEGIN Form -->
+          <form action="" method="post">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="exampleInputTitle1" class="form-label">Title</label>
+              <input type="text" name="inputTitel" class="form-control" id="inputTitel" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-1">
+              <label for="exampleInputTitle2" class="form-label">Type</label><br>
+              <input class="form-check-input ms-3" type="radio" name="flexRadioDefault" value="Feature" id="Radio_Feature" required>
+                <label class="form-check-label" for="flexRadioDefault1">Feature</label>
+              </div>
+            <div class="mb-3">
+              <input class="form-check-input ms-3" type="radio" name="flexRadioDefault" value="Bug" id="Radio_Bug" required>
+                <label class="form-check-label" for="flexRadioDefault2">Bug</label>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputTitle3" class="form-label">Priority</label>
+              <select name="priority" name="priorityMenu" id="priorityMenu" class="form-select" aria-label="Default select example">
+                <option value="Please Select" selected>Please Select</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Critical">Critical</option>
+                </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputTitle4" class="form-label">Status</label>
+              <select name="statusMenu" id="statusMenu" class="form-select" aria-label="Default select example">
+                <option value="Please Select" selected>Please Select</option>
+                <option value="To_do">To do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done">Done</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputdate" class="form-label">Date</label>
+                <input type="date" name="inputDate" class="form-control" id="inputDate" aria-describedby="dateHelp" required>
+            </div>
+            <div class="mb-3">
+                <label for="validationTextarea" class="form-label">Textarea</label>
+                <textarea class="form-control" name="inputDesciption" id="inputDesciption" rows="5" required></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn text-dark rounded-0" style="border: 1px solid #E1B09E;" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-dark w-25 rounded-0">Add</button>
+          </div>
+        </form>
+        <!-- END Form -->
+        </div>
+      </div>
+    </div>
+    <!-- END Modal -->
 
     <!-- BEGIN FOOTER -->
     <footer id="footer" class="bg-black text-white text-center">
