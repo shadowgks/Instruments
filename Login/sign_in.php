@@ -1,3 +1,6 @@
+<?php
+  include("../scripts.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +14,11 @@
     <!-- BEGIN FontAwesomme-->
 
     <!-- BEGIN Bootstrap style-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- END Bootstrap style-->
 
     <!-- BEGIN Bootstrap icons-->
-    <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/bootstrap-icons/bootstrap-icons.css">
     <!-- END Bootstrap icons-->
     <!-- =============================================================== -->
 </head>
@@ -26,8 +29,8 @@
     <!-- BEGIN NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #FAF2EE;">
       <div class="container-fluid px-lg-5">
-        <a class="navbar-brand" href="index.html">
-          <img src="/assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
+        <a class="navbar-brand" href="../index.php">
+          <img src="../assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -35,18 +38,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About US</a>
+              <a class="nav-link" href="../index.php#ABOUT_US">About US</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact US</a>
+              <a class="nav-link" href="../index.php#CONTACT_US">Contact US</a>
             </li>
           </ul>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              <a href="/sign_in.html" class="btn text-dark border-secondary rounded-0 px-4">Sign In</a>
-              <a href="/register.html" class="btn btn-dark rounded-0 px-4">Register</a>
+              <a href="sign_in.php" class="btn text-dark border-secondary rounded-0 px-4">Sign In</a>
+              <a href="register.php" class="btn btn-dark rounded-0 px-4">Register</a>
           </div>
         </div>
       </div>
@@ -58,17 +61,28 @@
         <div class="container border border-bottom rounded-2 shadow">
             <div class="row align-items-center">
                 <div class="col-md">
-                  <img src="/assets/img/svg/login/sign_in.svg" alt="Regestre">
+                  <img src="../assets/img/svg/login/sign_in.svg" alt="Regestre">
                 </div>
                 <div class="col-md">
                   <h1 class="text-center mb-5">SIGN IN</h1>
-                  <form class="mx-1 mx-md-4">
-  
+
+                  <!-- Mssg Session Failed -->
+                  <?php if(isset($_SESSION['Failed'])): ?>
+                      <div class="alert alert-danger" role="alert">
+                      <strong>Failed!</strong>
+                        <?php
+                          echo $_SESSION['Failed'];
+                          unset($_SESSION['Failed']);
+                        ?>
+                      </div>
+                    <?php endif ?>
+                    
+                  <form class="mx-1 mx-md-4" method="POST" action="../scripts.php" enctype="multipart/form-data">
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 mt-4 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example3c">Your Email</label>
-                        <input type="email" id="form3Example3c" class="form-control" />
+                        <input type="email" name="email" id="form3Example3c" class="form-control" />
                       </div>
                     </div>
   
@@ -76,12 +90,12 @@
                       <i class="fas fa-lock fa-lg me-3 mt-4 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example4c">Password</label>
-                        <input type="password" id="form3Example4c" class="form-control" />
+                        <input type="password" name="password" id="form3Example4c" class="form-control" />
                       </div>
                     </div>
   
                     <div class="d-flex justify-content-center mb-5">
-                      <button type="submit" class="btn btn-dark rounded-0">Sign Up</button>
+                      <button type="submit" name="sign_in" class="btn btn-dark rounded-0">Sign Up</button>
                     </div>
   
                   </form>
@@ -114,11 +128,11 @@
     <!-- END APP -->
     
     <!-- BEGIN Bootstrap js -->
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- END Bootstrap js-->
     <!-- =============================================================== -->
     <!-- BEGIN js scripts -->
-    <script src="/scripts.js"></script>
+    <script src="../scripts.js"></script>
     <!-- END js scripts -->
 </body>
 </html>

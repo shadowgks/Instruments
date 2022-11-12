@@ -1,3 +1,10 @@
+<?php 
+  include("../scripts.php");
+
+  // BEGIN CONDISTION
+  // USER IF EXISTING
+  if(isset($_SESSION['user'])):
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +18,11 @@
     <!-- BEGIN FontAwesomme-->
 
     <!-- BEGIN Bootstrap style-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- END Bootstrap style-->
 
     <!-- BEGIN Bootstrap icons-->
-    <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/bootstrap-icons/bootstrap-icons.css">
     <!-- END Bootstrap icons-->
     <!-- =============================================================== -->
 </head>
@@ -26,8 +33,8 @@
     <!-- BEGIN NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #FAF2EE;">
         <div class="container-fluid px-lg-5">
-          <a class="navbar-brand" href="index.html">
-            <img src="/assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
+          <a class="navbar-brand" href="../index.php">
+            <img src="../assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,29 +42,35 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About US</a>
+                <a class="nav-link" href="../index.php#ABOUT_US">About US</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Contact US</a>
+                <a class="nav-link" href="../index.php#CONTACT_US">Contact US</a>
               </li>
             </ul>
             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <form class="navbar-nav">
                 <ul class="navbar-nav">
                     <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                       MENU
                     </a>
                     <li class="nav-item dropdown">
+                      <!-- session name user -->
                         <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          SAAD MOUMOU
+                          <?php 
+                          //Get name user
+                          echo $_SESSION['user']['name'];
+                          ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                          <li><a class="dropdown-item" href="#">SIGN OUT</a></li>
+                          <li><button type="submit" name="sign_out" class="dropdown-item">Sign out</button></li>
                         </ul>
                     </li>
                 </ul>
+              </form>
             </div>
           </div>
         </div>
@@ -71,8 +84,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body w-100">
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="user.html">Instruments</a>
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.html">Statistic</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php">Instruments</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Statistic</a>
       </div>
     </div>
     <!-- END SIDEBAR MENU -->
@@ -157,24 +170,19 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <!-- BEGIN Form -->
-          <form action="" method="post">
+          <form action="../scripts.php" method="POST" enctype="multipart/form-data">
           <div class="modal-body">
             <div class="mb-3">
               <label for="exampleInputTitle1" class="form-label">Title</label>
-              <input type="text" name="inputTitel" class="form-control" id="inputTitel" aria-describedby="emailHelp" required>
-            </div>
-            <div class="mb-1">
-              <label for="exampleInputTitle2" class="form-label">Type</label><br>
-              <input class="form-check-input ms-3" type="radio" name="flexRadioDefault" value="Feature" id="Radio_Feature" required>
-                <label class="form-check-label" for="flexRadioDefault1">Feature</label>
-              </div>
-            <div class="mb-3">
-              <input class="form-check-input ms-3" type="radio" name="flexRadioDefault" value="Bug" id="Radio_Bug" required>
-                <label class="form-check-label" for="flexRadioDefault2">Bug</label>
+              <input type="text" name="title" class="form-control" id="title" aria-describedby="textHelp" required>
             </div>
             <div class="mb-3">
-              <label for="exampleInputTitle3" class="form-label">Priority</label>
-              <select name="priority" name="priorityMenu" id="priorityMenu" class="form-select" aria-label="Default select example">
+              <label for="exampleInputTitle1" class="form-label">Picture</label>
+              <input type="file" name="picture" class="form-control" id="picture" aria-describedby="fileHelp" required>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputTitle3" class="form-label">Families</label>
+              <select name="families" name="priorityMenu" id="priorityMenu" class="form-select" aria-label="Default select example">
                 <option value="Please Select" selected>Please Select</option>
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
@@ -183,26 +191,29 @@
                 </select>
             </div>
             <div class="mb-3">
-              <label for="exampleInputTitle4" class="form-label">Status</label>
-              <select name="statusMenu" id="statusMenu" class="form-select" aria-label="Default select example">
-                <option value="Please Select" selected>Please Select</option>
-                <option value="To_do">To do</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Done">Done</option>
-                </select>
-            </div>
-            <div class="mb-3">
                 <label for="exampleInputdate" class="form-label">Date</label>
-                <input type="date" name="inputDate" class="form-control" id="inputDate" aria-describedby="dateHelp" required>
+                <input type="date" name="date" class="form-control" id="date" aria-describedby="dateHelp" required>
             </div>
+
+            <div class="mb-3 row">
+              <div class="mb-3 col-6">
+                <label for="exampleInputdate" class="form-label">Price</label>
+                <input type="number" name="price" class="form-control" id="price" aria-describedby="numberHelp" required>
+              </div>
+              <div class="mb-3 col-6">
+                <label for="exampleInputdate" class="form-label">Quantities</label>
+                <input type="number" name="quantities" class="form-control" id="quantities" aria-describedby="numberHelp" required>
+              </div>
+            </div>
+            
             <div class="mb-3">
-                <label for="validationTextarea" class="form-label">Textarea</label>
-                <textarea class="form-control" name="inputDesciption" id="inputDesciption" rows="5" required></textarea>
+                <label for="validationTextarea" class="form-label">Description</label>
+                <textarea class="form-control" name="description" id="description" rows="5" required></textarea>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn text-dark rounded-0" style="border: 1px solid #E1B09E;" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-dark w-25 rounded-0">Add</button>
+            <button type="submit" name="save" class="btn btn-dark w-25 rounded-0">Save</button>
           </div>
         </form>
         <!-- END Form -->
@@ -233,11 +244,20 @@
     <!-- END APP -->
 
     <!-- BEGIN Bootstrap js -->
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- END Bootstrap js-->
     <!-- =============================================================== -->
     <!-- BEGIN js scripts -->
-    <script src="/scripts.js"></script>
+    <script src="../scripts.js"></script>
     <!-- END js scripts -->
 </body>
 </html>
+<?php 
+//USER IF NOT EXISTING
+else: header("location: ../Login/sign_in.php"); 
+die("");
+endif;
+// END CONDISTION
+
+
+

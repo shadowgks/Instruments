@@ -11,11 +11,11 @@
     <!-- BEGIN FontAwesomme-->
 
     <!-- BEGIN Bootstrap style-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- END Bootstrap style-->
 
     <!-- BEGIN Bootstrap icons-->
-    <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/bootstrap-icons/bootstrap-icons.css">
     <!-- END Bootstrap icons-->
     <!-- =============================================================== -->
 </head>
@@ -26,8 +26,8 @@
     <!-- BEGIN NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #FAF2EE;">
         <div class="container-fluid px-lg-5">
-          <a class="navbar-brand" href="index.html">
-            <img src="/assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
+          <a class="navbar-brand" href="../index.php">
+            <img src="assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,13 +35,13 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About US</a>
+                <a class="nav-link" href="index.php#ABOUT_US">About US</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Contact US</a>
+                <a class="nav-link" href="index.php#CONTACT_US">Contact US</a>
               </li>
             </ul>
             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
@@ -71,22 +71,20 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body w-100">
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="user.html">Instruments</a>
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashboard.html">Dashboard</a>
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php">Instruments</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Statistic</a>
       </div>
     </div>
     <!-- END MENU -->
     <!-- END HEADER --> 
 
-    <!-- BEGIN Dashboard -->
+    <!-- BEGIN statistic -->
     <section class="py-5">
       <div class="container">
     
       </div>
     </section>
-    <!-- END Dashboard -->
+    <!-- END statistic -->
     
     <!-- BEGIN FOOTER -->
     <footer id="footer" class="bg-black text-white text-center">
@@ -110,11 +108,11 @@
     <!-- END APP -->
 
     <!-- BEGIN Bootstrap js -->
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <!-- END Bootstrap js-->
     <!-- =============================================================== -->
     <!-- BEGIN js scripts -->
-    <script src="/scripts.js"></script>
+    <script src="scripts.js"></script>
     <!-- END js scripts -->
 </body>
 </html>
