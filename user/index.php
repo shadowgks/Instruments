@@ -2,7 +2,7 @@
   include("../scripts.php");
 
   // BEGIN CONDISTION
-  // USER IF EXISTING
+  // CEACK USER IF EXISTING
   if(isset($_SESSION['user'])):
 ?>
 <!DOCTYPE html>
@@ -95,6 +95,28 @@
     <section class="py-5">
       <div class="container">
         <div class="row pb-4">
+          <!-- Mssg Session Failed -->
+          <?php if(isset($_SESSION['Failed'])): ?>
+            <div class="alert alert-danger" role="alert">
+            <strong>Failed!</strong>
+              <?php
+                echo $_SESSION['Failed'];
+                unset($_SESSION['Failed']);
+              ?>
+            </div>
+          <?php endif ?>
+
+          <!-- Mssg Session Success -->
+          <?php if(isset($_SESSION['Success'])): ?>
+              <div class="alert alert-primary" role="alert">
+              <strong>Success!</strong>
+                <?php
+                  echo $_SESSION['Success'];
+                  unset($_SESSION['Success']);
+                ?>
+              </div>
+          <?php endif ?>
+          
         <!-- BEGIN Button trigger modal -->
           <div class="d-grid gap-2">
             <button class="btn btn-dark rounded-0 shadow" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

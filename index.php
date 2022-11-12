@@ -47,12 +47,12 @@
                 <a class="nav-link" href="#CONTACT_US">Contact US</a>
               </li>
             </ul>
+            <!-- CEACK USER SESSION IF EXISTING -->
             <?php if(!isset($_SESSION['user'])): ?>
             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                 <a href="Login/sign_in.php" class="btn text-dark border-secondary rounded-0 px-4">Sign In</a>
                 <a href="Login/register.php" class="btn btn-dark rounded-0 px-4">Register</a>
             </div>
-
             <!-- BEGIN CONDISTION -->
             <?php else: ?>
               <form class="navbar-nav">

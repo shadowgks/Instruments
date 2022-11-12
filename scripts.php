@@ -27,7 +27,7 @@ function regestreUser(){
     $name       = $_POST['yourname'];
     $email      = $_POST['email'];
     $password   = $_POST['password'];
-   
+
     //Sql Query
     $checkEmail = "SELECT * FROM users WHERE email = '$email'";
     $execute = mysqli_query($conn,$checkEmail);
@@ -47,7 +47,7 @@ function regestreUser(){
             $_SESSION['Failed'] = "This Account Has been not Created";
             header("location: Login/register.php");
         }
-     }
+    }
 }
 
 //Sign IN
@@ -57,7 +57,7 @@ function signinUser(){
     //Get data form
     $email      = $_POST['email'];
     $password   = $_POST['password'];
-   
+
     //Sql Query
     $requete = "SELECT * FROM users 
     WHERE email = '$email' 
@@ -101,6 +101,16 @@ function saveInstrument(){
     $quantities = $_POST['quantities'];
     $description= $_POST['description'];
 
+    $add = "INSERT INTO `instruments`(`name`, `img`, `description`, `date`, `qnt`, `price`, `fammille_id`) 
+    VALUES ('$title','$picture','$families','$date','$price','$quantities','$description')";
+    $execute = mysqli_query($conn,$add);
+    if($execute){
+        $_SESSION['Success'] = "Added Instrument";
+        header("location: user/index.php");
+    }else{
+        $_SESSION['Failed'] = "Oops not added instrument!!!";
+        header("location: user/index.php");
+    }
     
 
 }
