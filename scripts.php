@@ -128,9 +128,10 @@ function getInstruments(){
     $data = mysqli_query($conn,$requete);
     if(mysqli_num_rows($data) > 0){
         foreach($data as $item){
-            echo '<div class="col-lg-3 col-md-6 col-sm-6 pb-3">
+            echo '
+            <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
                     <div class="card shadow">
-                        <img src="../assets/img/upload/'.$item["img"].'" class="card-img-top" height="320" alt="...">
+                        <img src="../assets/img/upload/'.$item["img"].'" class="card-img-top" height="350" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">'.$item["name"].'</h5>
                             <h6 class="card-subtitle mb-2 text-muted">'.$item["NameFammiles"].'</h6>
@@ -141,8 +142,9 @@ function getInstruments(){
                             <li class="list-group-item">Quantities: <span class="text-muted">'.$item["qnt"].'</span></li>
                             <li class="list-group-item">Price: <span class="text-muted">'.$item["price"].'DH</span></li>
                         </ul>
-                        <div class="card-body">
-                            <a href="#" class="btn btn-dark">Buy Now</a>
+                        <div class="p-3 d-flex justify-content-between">
+                            <button class="btn btn-dark p-3 w-100 me-3"><i class="fa-solid fa-cart-shopping"></i></button>
+                            <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btn_edit" class="btn btn-warning p-3"><i class="fa-solid fa-pen-to-square"></i></button>
                         </div>
                     </div>
                 </div>';

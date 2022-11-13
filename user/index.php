@@ -119,7 +119,7 @@
           
         <!-- BEGIN Button trigger modal -->
           <div class="d-grid gap-2">
-            <button class="btn btn-dark rounded-0 shadow" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button class="btn btn-dark rounded-0 shadow" id="btn_add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
               ADD <i class="bi bi-plus-square"></i></i></button>
           </div>
         <!-- END Btn add -->
@@ -154,7 +154,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <!-- BEGIN Form -->
-          <form action="../scripts.php" method="POST" enctype="multipart/form-data">
+          <form action="../scripts.php" method="POST" name="form_instrument" id="form_instrument" enctype="multipart/form-data" data-parsley-validate>
           <div class="modal-body">
             <div class="mb-3">
               <label for="exampleInputTitle1" class="form-label">Title</label>
@@ -198,7 +198,9 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn text-dark rounded-0" style="border: 1px solid #E1B09E;" data-bs-dismiss="modal">Close</button>
-            <button type="submit" name="save" class="btn btn-dark w-25 rounded-0">Save</button>
+            <button type="submit" name="delete" id="delete" class="btn btn-danger w-25 rounded-0">Delete</button>
+            <button type="submit" name="update" id="update" class="btn btn-success w-25 rounded-0">Update</button>
+            <button type="submit" name="save" id="save" class="btn btn-dark w-25 rounded-0">Save</button>
           </div>
         </form>
         <!-- END Form -->
@@ -231,9 +233,42 @@
     <!-- BEGIN Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- END Bootstrap js-->
+
+    <!-- =============================================================== -->
+    <!-- BEGIN jquery js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- END jquery js-->
+
+    <!-- =============================================================== -->
+    <!-- BEGIN parsley js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- END parsley js-->
+
     <!-- =============================================================== -->
     <!-- BEGIN js scripts -->
-    <script src="../scripts.js"></script>
+    <script>
+      //Btns model
+      var btn_save = document.getElementById("save");
+      var btn_update = document.getElementById("update");
+      var btn_delete = document.getElementById("delete");
+      
+      //Btn edite cart
+      document.getElementById("btn_edit").addEventListener("click",()=>{
+          btn_save.style.display = "none";
+          btn_update.style.display = "block";
+          btn_delete.style.display = "block";
+      });
+
+      //Btn add cart
+      document.getElementById("btn_add").addEventListener("click",()=>{
+          btn_save.style.display = "block";
+          btn_update.style.display = "none";
+          btn_delete.style.display = "none";
+      });
+
+      //Get id Form
+      $('#form-task').parsley();
+    </script>
     <!-- END js scripts -->
 </body>
 </html>
