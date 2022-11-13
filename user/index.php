@@ -137,46 +137,8 @@
     <section class="pb-5">
       <div class="container min-vh-100">
         <div class="row">
-          <div class="col-md col-sm-6 pb-3">
-            <div class="card shadow">
-              <img src="" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-dark">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md col-sm-6 pb-3">
-            <div class="card shadow">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-dark">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md col-sm-6 pb-3">
-            <div class="card shadow">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-dark">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md col-sm-6 pb-3">
-            <div class="card shadow">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-dark">Go somewhere</a>
-              </div>
-            </div>
-          </div>
+          <!-- get info instruments -->
+          <?php getInstruments(); ?>  
         </div>
       </div>
     </section>
@@ -200,16 +162,17 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputTitle1" class="form-label">Picture</label>
-              <input type="file" name="picture" class="form-control" id="picture" aria-describedby="fileHelp" required>
+              <input type="file" name="picture" class="form-control" id="picture" aria-describedby="fileHelp" accept="image/png, image/jpeg" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputTitle3" class="form-label">Families</label>
-              <select name="families" name="priorityMenu" id="priorityMenu" class="form-select" aria-label="Default select example">
-                <option value="Please Select" selected>Please Select</option>
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
-                <option value="Critical">Critical</option>
+              <select name="families" id="families" class="form-select" aria-label="Default select example">
+                <option value="Please Select" selected disabled>Please Select</option>
+                <option value="1">Bois</option>
+                <option value="2">Clavirs</option>
+                <option value="3">Cordes</option>
+                <option value="4">Cuivres</option>
+                <option value="5">Percussions</option>
                 </select>
             </div>
             <div class="mb-3">
