@@ -18,34 +18,52 @@ if(isset($_POST['save'])){
     saveInstrument();
 }
 
+//Validation Forms
+function test_input($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 //Login
 //Register
 function regestreUser(){
     global $conn;
 
-    //Get data form
-    $name       = $_POST['yourname'];
-    $email      = $_POST['email'];
-    $password   = $_POST['password'];
+    //Get data from form
+    $name = $_POST["yourname"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $password_confirme = $_POST["password-confirme"];
 
-    //Sql Query
-    $checkEmail = "SELECT * FROM users WHERE email = '$email'";
-    $data = mysqli_query($conn,$checkEmail);
-    //Execute sql query
-    if(mysqli_num_rows($data) > 0){
-        $_SESSION['Failed'] = "This Account Before Used!";
+    //Check inputs form if empty
+    if($name              === "" 
+    || $email             !== "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$" && $email === ""
+    || $password          === ""
+    || $password_confirme !== $password){
+        $_SESSION['Failed'] = "Fill in the blanks as appropriate!";
         header("location: Login/register.php");
     }else{
         //Sql Query
-        $data = "INSERT INTO users(name, email, password, dateEntre) 
-        VALUES ('$name','$email','$password',NOW())";
-        $execute = mysqli_query($conn,$data);
-        if($execute){
-            $_SESSION['Success'] = "This Account Has been Created";
+        $checkEmail = "SELECT * FROM users WHERE email = '$email'";
+        $data = mysqli_query($conn,$checkEmail);
+        //Execute sql query check num email on db
+        if(mysqli_num_rows($data) > 0){
+            $_SESSION['Failed'] = "This Account Before Used!";
             header("location: Login/register.php");
         }else{
-            $_SESSION['Failed'] = "This Account Has been not Created";
-            header("location: Login/register.php");
+            //Sql Query
+            $requete = "INSERT INTO users(name, email, password, dateEntre) 
+            VALUES ('$name','$email','$password',NOW())";
+            $data = mysqli_query($conn,$requete);
+            if($data){
+                $_SESSION['Success'] = "This Account Has been Created";
+                header("location: Login/register.php");
+            }else{
+                $_SESSION['Failed'] = "This Account Has been not Created";
+                header("location: Login/register.php");
+            }
         }
     }
 }
@@ -54,24 +72,32 @@ function regestreUser(){
 function signinUser(){
     global $conn;
 
-    //Get data form
+    //Get data from form
     $email      = $_POST['email'];
     $password   = $_POST['password'];
 
-    //Sql Query
-    $requete = "SELECT * FROM users 
-    WHERE email = '$email' 
-    and password = '$password'";
-    $data = mysqli_query($conn,$requete);
-
-    if(mysqli_num_rows($data) === 1){
-        $row = mysqli_fetch_assoc($data);  
-        $_SESSION['user'] = $row;
-        header("location: user/index.php");
+    //Check inputs form if empty
+    if($email    === "" 
+    || $password === ""){
+        $_SESSION['Failed'] = "Fill in the blanks as appropriate!";
+        header("location: Login/register.php");
     }else{
-        $_SESSION['Failed'] = "Email or Password not correct!";
-        header("location: Login/sign_in.php");
-    }
+        //Sql Query
+        $requete = "SELECT * FROM users 
+        WHERE email = '$email' 
+        and password = '$password'";
+        $data = mysqli_query($conn,$requete);
+
+        //Check if you find any user on db
+        if(mysqli_num_rows($data) === 1){
+            $row = mysqli_fetch_assoc($data);  
+            $_SESSION['user'] = $row;
+            header("location: user/index.php");
+        }else{
+            $_SESSION['Failed'] = "Email or Password not correct!";
+            header("location: Login/sign_in.php");
+        }
+    }   
 }
 
 //check if user went to sign out
@@ -90,6 +116,7 @@ if(isset($_GET['sign_out'])){
 function saveInstrument(){
     global $conn;
 
+    //Get data from form
     $title      = $_POST['title'];
     //Upload img
     //================================================
@@ -104,21 +131,31 @@ function saveInstrument(){
     $quantities = $_POST['quantities'];
     $description= $_POST['description'];
 
-    $requete = "INSERT INTO instruments(name, img, description, date, qnt, price, fammille_id) 
-    VALUES ('$title','$picture_name','$description','$date','$quantities','$price','$families')";
-    $data = mysqli_query($conn,$requete);
-    if($data){
-        $_SESSION['Success'] = "Added Instrument";
-        header("location: user/index.php");
+    //Check inputs form if empty
+    if($title        === "" 
+    || $picture_name === ""
+    || $families     === "Please Select"
+    || $date         === ""
+    || $price        === ""
+    || $quantities   === ""
+    || $description  === ""){
+        $_SESSION['Failed'] = "Fill in the blanks as appropriate!";
+        header("location: Login/register.php");
     }else{
-        $_SESSION['Failed'] = "Oops not added instrument!!!";
-        header("location: user/index.php");
+        $requete = "INSERT INTO instruments(name, img, description, date, qnt, price, fammille_id) 
+        VALUES ('$title','$picture_name','$description','$date','$quantities','$price','$families')";
+        $data = mysqli_query($conn,$requete);
+        if($data){
+            $_SESSION['Success'] = "Added Instrument";
+            header("location: user/index.php");
+        }else{
+            $_SESSION['Failed'] = "Oops not added instrument!!!";
+            header("location: user/index.php");
+        }
     }
-    
-
 }
 
-//read
+//Read
 function getInstruments(){
     global $conn;
 
@@ -144,13 +181,14 @@ function getInstruments(){
                         </ul>
                         <div class="p-3 d-flex justify-content-between">
                             <button class="btn btn-dark p-3 w-100 me-3"><i class="fa-solid fa-cart-shopping"></i></button>
-                            <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btn_edit" class="btn btn-warning p-3"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="btn_edit()" class="btn btn-warning p-3"><i class="fa-solid fa-pen-to-square"></i></button>
                         </div>
                     </div>
-                </div>';
+            </div>';
         }
     }else{
         $_SESSION['Failed'] = "You dont have any carte!!!";
         unset($_SESSION['Failed']);
     }
 }
+

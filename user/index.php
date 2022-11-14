@@ -24,7 +24,13 @@
     <!-- BEGIN Bootstrap icons-->
     <link rel="stylesheet" href="../assets/bootstrap-icons/bootstrap-icons.css">
     <!-- END Bootstrap icons-->
+
+    <!-- BEGIN parsley css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css">
+    <!-- END parsley css-->
     <!-- =============================================================== -->
+</style>
 </head>
 <body>
     <!-- BEGIN APP -->
@@ -119,7 +125,7 @@
           
         <!-- BEGIN Button trigger modal -->
           <div class="d-grid gap-2">
-            <button class="btn btn-dark rounded-0 shadow" id="btn_add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button class="btn btn-dark rounded-0 shadow" onclick="btn_add()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
               ADD <i class="bi bi-plus-square"></i></i></button>
           </div>
         <!-- END Btn add -->
@@ -158,15 +164,15 @@
           <div class="modal-body">
             <div class="mb-3">
               <label for="exampleInputTitle1" class="form-label">Title</label>
-              <input type="text" name="title" class="form-control" id="title" aria-describedby="textHelp" required>
+              <input type="text" name="title" class="form-control" id="title" data-parsley-trigger="keyup" data-parsley-length="[2, 60]" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputTitle1" class="form-label">Picture</label>
-              <input type="file" name="picture" class="form-control" id="picture" aria-describedby="fileHelp" accept="image/png, image/jpeg" required>
+              <input type="file" name="picture" class="form-control" id="picture" accept="image/png, image/jpeg" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputTitle3" class="form-label">Families</label>
-              <select name="families" id="families" class="form-select" aria-label="Default select example">
+              <select name="families" id="families" class="form-select" required>
                 <option value="Please Select" selected disabled>Please Select</option>
                 <option value="1">Bois</option>
                 <option value="2">Clavirs</option>
@@ -177,23 +183,26 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputdate" class="form-label">Date</label>
-                <input type="date" name="date" class="form-control" id="date" aria-describedby="dateHelp" required>
+                <input type="date" name="date" class="form-control" id="date" required>
             </div>
 
             <div class="mb-3 row">
               <div class="mb-3 col-6">
                 <label for="exampleInputdate" class="form-label">Price</label>
-                <input type="number" name="price" class="form-control" id="price" aria-describedby="numberHelp" required>
+                <input type="number" name="price" class="form-control" id="price" data-parsley-trigger="keyup" data-parsley-min="0" required>
               </div>
               <div class="mb-3 col-6">
                 <label for="exampleInputdate" class="form-label">Quantities</label>
-                <input type="number" name="quantities" class="form-control" id="quantities" aria-describedby="numberHelp" required>
+                <input type="number" name="quantities" class="form-control" id="quantities" data-parsley-min="0" required>
               </div>
             </div>
             
             <div class="mb-3">
                 <label for="validationTextarea" class="form-label">Description</label>
-                <textarea class="form-control" name="description" id="description" rows="5" required></textarea>
+                <textarea class="form-control" name="description" id="description" rows="5" 
+                data-parsley-trigger="keyup"
+                data-parsley-length="[2, 300]"
+                required></textarea>
             </div>
           </div>
           <div class="modal-footer">
@@ -230,46 +239,23 @@
     <!-- END FOOTER -->
     <!-- END APP -->
 
+    <!-- =============================================================== -->
     <!-- BEGIN Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- END Bootstrap js-->
 
-    <!-- =============================================================== -->
     <!-- BEGIN jquery js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- END jquery js-->
 
-    <!-- =============================================================== -->
     <!-- BEGIN parsley js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- END parsley js-->
 
-    <!-- =============================================================== -->
     <!-- BEGIN js scripts -->
-    <script>
-      //Btns model
-      var btn_save = document.getElementById("save");
-      var btn_update = document.getElementById("update");
-      var btn_delete = document.getElementById("delete");
-      
-      //Btn edite cart
-      document.getElementById("btn_edit").addEventListener("click",()=>{
-          btn_save.style.display = "none";
-          btn_update.style.display = "block";
-          btn_delete.style.display = "block";
-      });
-
-      //Btn add cart
-      document.getElementById("btn_add").addEventListener("click",()=>{
-          btn_save.style.display = "block";
-          btn_update.style.display = "none";
-          btn_delete.style.display = "none";
-      });
-
-      //Get id Form
-      $('#form-task').parsley();
-    </script>
+    <script src="../scripts.js"></script>
     <!-- END js scripts -->
+    <!-- =============================================================== -->
 </body>
 </html>
 <?php 

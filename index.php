@@ -20,6 +20,11 @@
     <!-- BEGIN Bootstrap icons-->
     <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
     <!-- END Bootstrap icons-->
+
+    <!-- BEGIN parsley css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css">
+    <!-- END parsley css-->
     <!-- =============================================================== -->
 </head>
 <body>
@@ -212,12 +217,24 @@
     <!-- END FOOTER -->
     <!-- END APP -->
 
+    <!-- =============================================================== -->
     <!-- BEGIN Bootstrap js -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <!-- END Bootstrap js-->
-    <!-- =============================================================== -->
+
+    <!-- BEGIN jquery js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- END jquery js-->
+
+    <!-- BEGIN parsley js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- END parsley js-->
+    
     <!-- BEGIN js scripts -->
     <script src="scripts.js"></script>
     <!-- END js scripts -->
+    <!-- =============================================================== -->
 </body>
 </html>
+
+

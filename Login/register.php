@@ -20,6 +20,11 @@
     <!-- BEGIN Bootstrap icons-->
     <link rel="stylesheet" href="../assets/bootstrap-icons/bootstrap-icons.css">
     <!-- END Bootstrap icons-->
+
+    <!-- BEGIN parsley css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css">
+    <!-- END parsley css-->
     <!-- =============================================================== -->
 </head>
 <body>
@@ -88,12 +93,12 @@
                       </div>
                     <?php endif ?>
 
-                  <form class="mx-1 mx-md-4" method="POST" action="../scripts.php" name="formRegister">
+                  <form class="mx-1 mx-md-4" method="POST" action="../scripts.php" name="form-register" id="form-register" data-parsley-validate>
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 mt-4 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example1c">Your Name</label>
-                        <input type="text" name="yourname" id="form3Example1c" class="form-control"/>
+                        <input type="text" name="yourname" id="form3Example1c" class="form-control" data-parsley-trigger="keyup" data-parsley-length="[2, 30]" required/>
                       </div>
                     </div>
   
@@ -101,7 +106,7 @@
                       <i class="fas fa-envelope fa-lg me-3 mt-4 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example3c">Your Email</label>
-                        <input type="email" name="email" id="form3Example3c" class="form-control" />
+                        <input type="email" name="email" id="form3Example3c" class="form-control" data-parsley-trigger="keyup" data-parsley-pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$" required/>
                       </div>
                     </div>
   
@@ -109,20 +114,20 @@
                       <i class="fas fa-lock fa-lg me-3 mt-4 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example4c">Password</label>
-                        <input type="password" name="password" id="form3Example4c" class="form-control" />
+                        <input type="password" name="password" id="password" class="form-control" data-parsley-trigger="keyup" data-parsley-minlength="8" required/>
                       </div>
                     </div>
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-key fa-lg me-3 mt-4 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                        <input type="password" id="form3Example4cd" class="form-control" />
+                        <label class="form-label" for="form3Example4cd">Repeat Your Password</label>
+                        <input type="password" name="password-confirme" id="password-confirme" class="form-control" data-parsley-trigger="keyup" data-parsley-equalto="#password" data-parsley-minlength="8" required/>
                       </div>
                     </div>
   
                     <div class="form-check d-flex justify-content-center mb-3">
-                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+                      <input class="form-check-input me-2" type="checkbox" id="form2Example3c"/>
                       <label class="form-check-label" for="form2Example3">
                         I agree all statements in <a href="#!" class="" style="color: #E1B09E;">Terms of service</a>
                       </label>
@@ -160,13 +165,22 @@
     </footer>
     <!-- END FOOTER -->
     <!-- END APP -->
-    
+    <!-- =============================================================== -->
     <!-- BEGIN Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- END Bootstrap js-->
-    <!-- =============================================================== -->
+    
+    <!-- BEGIN jquery js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- END jquery js-->
+
+    <!-- BEGIN parsley js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- END parsley js-->
+
     <!-- BEGIN js scripts -->
     <script src="../scripts.js"></script>
     <!-- END js scripts -->
+    <!-- =============================================================== -->
 </body>
 </html>
