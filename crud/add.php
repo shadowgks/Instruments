@@ -19,9 +19,6 @@ function saveInstrument(){
     $quantities = $_POST['quantities'];
     $description= $_POST['description'];
     $id_user    = $_POST['id_user'];
-    var_dump($_POST['id_user']);
-    die("");
-    
 
     //Check inputs form if empty
     if($title        === "" 

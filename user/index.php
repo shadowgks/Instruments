@@ -164,7 +164,7 @@
           <form action="../scripts.php" method="POST" name="form_instrument" id="form_instrument" enctype="multipart/form-data" data-parsley-validate>
           <div class="modal-body">
             <input type="hidden" name="id_instrument">
-            <input type="hidden" name="id_user">
+            <input type="hidden" name="id_user" value="<?php echo $_SESSION['user']['id']?>">
             <div class="mb-3">
               <label for="exampleInputTitle1" class="form-label">Title</label>
               <input type="text" name="title" class="form-control" id="title" data-parsley-trigger="keyup" data-parsley-length="[2, 60]" required>

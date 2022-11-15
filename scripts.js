@@ -21,7 +21,7 @@ function btn_edit(id){
     form_instrument.price.value         = document.getElementById(id).getAttribute('price');
     form_instrument.quantities.value    = document.getElementById(id).getAttribute('qnt');
     form_instrument.description.value   = document.getElementById(id).getAttribute('description');
-    form_instrument.id_user.value       = document.getElementById(id).getAttribute('id_user');
+    
 
 
 };
