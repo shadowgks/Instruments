@@ -37,7 +37,7 @@
           <a class="navbar-brand" href="../index.php">
             <img src="../assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -66,10 +66,10 @@
         <div class="container border border-bottom rounded-2 shadow">
             <div class="row align-items-center">
                 <div class="col-md">
-                  <img src="../assets/img/svg/login/regestre.svg" alt="Regestre">
+                  <img src="../assets/img/svg/login/regestre.svg" alt="REGISTER">
                 </div>
                 <div class="col-md">
-                  <h1 class="text-center my-5">REGESTRE</h1>
+                  <h1 class="text-center my-5">REGISTER</h1>
 
                   <!-- Mssg Session Failed -->
                   <?php if(isset($_SESSION['Failed'])): ?>

@@ -1,6 +1,10 @@
 <?php
 //INCLUDE DATABASE FILE
 include("db/connexionDB.php");
+include("crud/add.php");
+include("crud/delete.php");
+include("crud/edit.php");
+include("crud/show.php");
 
 //SESSSION IS A WAY TO STORE DATA TO BE USED ACROSS MULTIPLE PAGES
 session_start();
@@ -13,19 +17,19 @@ if(isset($_POST['sign_in'])){
     signinUser();
 }
 
+//============================
 //CRUD
 if(isset($_POST['save'])){
     saveInstrument();
 }
-
-//Validation Forms
-function test_input($data){
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
+if(isset($_POST['update'])){
+    updateInstrument();
+}
+if(isset($_POST['delete'])){
+    deleteInstrument();
 }
 
+//============================
 //Login
 //Register
 function regestreUser(){
@@ -109,86 +113,3 @@ if(isset($_GET['sign_out'])){
     //page home Redirect to page sign-in
     header("location: Login/sign_in.php");
 };
-
-//==========================================================================
-//CRUD
-//Create
-function saveInstrument(){
-    global $conn;
-
-    //Get data from form
-    $title      = $_POST['title'];
-    //Upload img
-    //================================================
-    $picture_name    = $_FILES['picture']['name'];
-    $tmp_picture_name = $_FILES['picture']['tmp_name'];
-    $folder = 'assets/img/upload/';
-    move_uploaded_file($tmp_picture_name,$folder.$picture_name);
-    //================================================
-    $families   = $_POST['families'];
-    $date       = $_POST['date'];
-    $price      = $_POST['price'];
-    $quantities = $_POST['quantities'];
-    $description= $_POST['description'];
-
-    //Check inputs form if empty
-    if($title        === "" 
-    || $picture_name === ""
-    || $families     === "Please Select"
-    || $date         === ""
-    || $price        === ""
-    || $quantities   === ""
-    || $description  === ""){
-        $_SESSION['Failed'] = "Fill in the blanks as appropriate!";
-        header("location: Login/register.php");
-    }else{
-        $requete = "INSERT INTO instruments(name, img, description, date, qnt, price, fammille_id) 
-        VALUES ('$title','$picture_name','$description','$date','$quantities','$price','$families')";
-        $data = mysqli_query($conn,$requete);
-        if($data){
-            $_SESSION['Success'] = "Added Instrument";
-            header("location: user/index.php");
-        }else{
-            $_SESSION['Failed'] = "Oops not added instrument!!!";
-            header("location: user/index.php");
-        }
-    }
-}
-
-//Read
-function getInstruments(){
-    global $conn;
-
-    $requete = "SELECT instruments.*, fammiles.name AS 'NameFammiles' 
-    FROM instruments join fammiles 
-    on instruments.fammille_id = fammiles.id";
-    $data = mysqli_query($conn,$requete);
-    if(mysqli_num_rows($data) > 0){
-        foreach($data as $item){
-            echo '
-            <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
-                    <div class="card shadow">
-                        <img src="../assets/img/upload/'.$item["img"].'" class="card-img-top" height="350" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">'.$item["name"].'</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">'.$item["NameFammiles"].'</h6>
-                            <p class="card-text">'.$item["description"].'</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item ">Date: <span class="text-muted">'.$item["date"].'</span></li>
-                            <li class="list-group-item">Quantities: <span class="text-muted">'.$item["qnt"].'</span></li>
-                            <li class="list-group-item">Price: <span class="text-muted">'.$item["price"].'DH</span></li>
-                        </ul>
-                        <div class="p-3 d-flex justify-content-between">
-                            <button class="btn btn-dark p-3 w-100 me-3"><i class="fa-solid fa-cart-shopping"></i></button>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="btn_edit()" class="btn btn-warning p-3"><i class="fa-solid fa-pen-to-square"></i></button>
-                        </div>
-                    </div>
-            </div>';
-        }
-    }else{
-        $_SESSION['Failed'] = "You dont have any carte!!!";
-        unset($_SESSION['Failed']);
-    }
-}
-

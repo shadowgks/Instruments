@@ -37,7 +37,7 @@
           <a class="navbar-brand" href="index.php">
             <img src="assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -75,6 +75,10 @@
                           <li><button type="submit" name="sign_out" class="dropdown-item">Sign out</button></li>
                         </ul>
                     </li>
+                    <!-- Btn Menu -->
+                    <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                      MENU
+                    </a>
                 </ul>
               </form>
               <?php endif ?>
@@ -83,6 +87,7 @@
         </div>
       </nav>
     <!-- END NAVBAR -->
+    
     
     <!-- BEGIN SECTION -->
     <section class="text-white bg-black py-5">
@@ -101,6 +106,19 @@
         </div>
     </section>
     <!-- END SECTION -->
+
+    <!-- BEGIN SIDEBAR MEMU -->
+    <div class="offcanvas offcanvas-start py-5" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">MENU</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body w-100">
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php">Instruments</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Statistic</a>
+      </div>
+    </div>
+    <!-- END SIDEBAR MENU -->
     <!-- END HEADER -->
 
     <!-- BEGIN SERVICES --> 

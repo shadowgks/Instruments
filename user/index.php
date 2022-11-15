@@ -42,7 +42,7 @@
           <a class="navbar-brand" href="../index.php">
             <img src="../assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -60,9 +60,6 @@
             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
             <form class="navbar-nav">
                 <ul class="navbar-nav">
-                    <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                      MENU
-                    </a>
                     <li class="nav-item dropdown">
                       <!-- session name user -->
                         <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -75,6 +72,10 @@
                           <li><button type="submit" name="sign_out" class="dropdown-item">Sign out</button></li>
                         </ul>
                     </li>
+                    <!-- Btn Menu -->
+                    <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                      MENU
+                    </a>
                 </ul>
               </form>
             </div>
@@ -162,6 +163,8 @@
           <!-- BEGIN Form -->
           <form action="../scripts.php" method="POST" name="form_instrument" id="form_instrument" enctype="multipart/form-data" data-parsley-validate>
           <div class="modal-body">
+            <input type="hidden" name="id_instrument">
+            <input type="hidden" name="id_user">
             <div class="mb-3">
               <label for="exampleInputTitle1" class="form-label">Title</label>
               <input type="text" name="title" class="form-control" id="title" data-parsley-trigger="keyup" data-parsley-length="[2, 60]" required>
@@ -171,8 +174,8 @@
               <input type="file" name="picture" class="form-control" id="picture" accept="image/png, image/jpeg" required>
             </div>
             <div class="mb-3">
-              <label for="exampleInputTitle3" class="form-label">Families</label>
-              <select name="families" id="families" class="form-select" required>
+              <label for="exampleInputTitle3" class="form-label">Fammllies</label>
+              <select name="fammllies" id="fammllies" class="form-select" required>
                 <option value="Please Select" selected disabled>Please Select</option>
                 <option value="1">Bois</option>
                 <option value="2">Clavirs</option>
