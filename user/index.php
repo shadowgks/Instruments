@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css">
     <!-- END parsley css-->
+
+    <!-- BEGIN style css-->
+    <link rel="stylesheet" href="..assets\css\style.css">
+    <!-- END style css-->
     <!-- =============================================================== -->
 </style>
 </head>
@@ -60,9 +64,12 @@
             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
             <form class="navbar-nav">
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
+                  <!-- IMG USER -->
+                  <img src="../<?php echo $_SESSION['user']['img'] ?>" class="rounded-circle" height="40" width="40" alt="">
+                  <!-- Dropdown user -->
+                  <li class="nav-item dropdown">
                       <!-- session name user -->
-                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown">
                           <?php 
                           //Get name user
                           echo $_SESSION['user']['name'];
@@ -71,11 +78,11 @@
                         <ul class="dropdown-menu dropdown-menu-dark">
                           <li><button type="submit" name="sign_out" class="dropdown-item">Sign out</button></li>
                         </ul>
-                    </li>
-                    <!-- Btn Menu -->
-                    <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                      MENU
-                    </a>
+                  </li>
+                  <!-- Btn Menu -->
+                  <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
+                    MENU
+                  </a>
                 </ul>
               </form>
             </div>
@@ -83,7 +90,6 @@
         </div>
       </nav>
     <!-- END NAVBAR -->
-
     <!-- BEGIN SIDEBAR MEMU -->
     <div class="offcanvas offcanvas-start py-5" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
@@ -144,8 +150,8 @@
     <section class="pb-5">
       <div class="container min-vh-100">
         <div class="row">
-          <!-- get info instruments -->
-          <?php getInstruments(); ?>  
+          <!-- Show info instruments -->
+          <?php getInstruments($_SESSION['user']['id']); ?>  
         </div>
       </div>
     </section>
@@ -170,8 +176,8 @@
               <input type="text" name="title" class="form-control" id="title" data-parsley-trigger="keyup" data-parsley-length="[2, 60]" required>
             </div>
             <div class="mb-3">
-              <label for="exampleInputTitle1" class="form-label">Picture</label>
-              <input type="file" name="picture" class="form-control" id="picture" accept="image/png, image/jpeg" required>
+              <label for="exampleInputTitle1" class="form-label">Picture (Optionnel)</label>
+              <input type="file" name="picture" class="form-control" id="picture" accept="image/png, image/jpeg">
             </div>
             <div class="mb-3">
               <label for="exampleInputTitle3" class="form-label">Fammllies</label>
@@ -264,9 +270,9 @@
 <?php 
 //USER IF NOT EXISTING
 else: header("location: ../Login/sign_in.php"); 
-die("");
+die();
 endif;
-// END CONDISTION
+//END CONDISTION
 
 
 

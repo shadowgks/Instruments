@@ -60,27 +60,32 @@
             </div>
             <!-- BEGIN CONDISTION -->
             <?php else: ?>
-              <form class="navbar-nav">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                      <!-- session name user -->
-                        <a class="nav-link dropdown-toggle text-center" role="button" data-bs-toggle="dropdown">
-                          <?php 
-                          //Get name user
-                          echo $_SESSION['user']['name'];
-                          ?>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                          <li><a href="user/index.php" class="dropdown-item">Dashboard</a></li>
-                          <li><button type="submit" name="sign_out" class="dropdown-item">Sign out</button></li>
-                        </ul>
-                    </li>
-                    <!-- Btn Menu -->
-                    <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                      MENU
-                    </a>
-                </ul>
-              </form>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <form class="navbar-nav">
+                    <ul class="navbar-nav">
+                      <!-- IMG USER -->
+                      <img src="<?php echo $_SESSION['user']['img'] ?>" class="rounded-circle" height="40" width="40" alt="">
+                      <!-- Dropdown user -->
+                      <li class="nav-item dropdown">
+                          <!-- session name user -->
+                            <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown">
+                              <?php 
+                              //Get name user
+                              echo $_SESSION['user']['name'];
+                              ?>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                              <li><a type="submit" name="dashboard" href="user\index.php" class="dropdown-item">Dashboard</a></li>
+                              <li><button type="submit" name="sign_out" class="dropdown-item">Sign out</button></li>
+                            </ul>
+                      </li>
+                      <!-- Btn Menu -->
+                      <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
+                        MENU
+                      </a>
+                    </ul>
+                  </form>
+                </div>
               <?php endif ?>
               <!-- END CONDISTION -->
           </div>
@@ -114,8 +119,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body w-100">
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php">Instruments</a>
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Statistic</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="user/index.php">Instruments</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="user/statistic.php">Statistic</a>
       </div>
     </div>
     <!-- END SIDEBAR MENU -->

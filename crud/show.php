@@ -1,13 +1,14 @@
 <?php
 
 //Read
-function getInstruments(){
+function getInstruments($id_user){
     global $conn;
 
     //Sql Query
     $requete = "SELECT instruments.*, users.id AS 'UserID', fammiles.name AS 'NameFammiles' 
     FROM instruments join fammiles join users
-    on instruments.fammille_id = fammiles.id";
+    on instruments.fammille_id = fammiles.id
+    and users.id = $id_user";
     $data = mysqli_query($conn,$requete);
     if(mysqli_num_rows($data) > 0){
         foreach($data as $item){
@@ -23,7 +24,7 @@ function getInstruments(){
             description  = '.$item["description"].'
             id_user      = '.$item["UserID"].'>
                     <div class="card shadow">
-                        <img src="../assets/img/upload/'.$item["img"].'" class="card-img-top" height="330" alt="...">
+                        <img src="../'.$item["img"].'" class="card-img-top" height="330" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">'.$item["name"].'</h5>
                             <h6 class="card-subtitle mb-2 text-muted">'.$item["NameFammiles"].'</h6>
@@ -34,8 +35,8 @@ function getInstruments(){
                             <li class="list-group-item">Quantities: <span class="text-muted">'.$item["qnt"].'</span></li>
                             <li class="list-group-item">Price: <span class="text-muted">'.$item["price"].'DH</span></li>
                         </ul>
-                        <div class="p-3 d-flex justify-content-between">
-                            <button class="btn btn-dark p-3 w-100 me-3"><i class="fa-solid fa-cart-shopping"></i></button>
+                        <div class="p-2 d-flex justify-content-between">
+                            <button class="btn btn-dark p-2 w-100 me-3"><i class="fa-solid fa-cart-shopping"></i></button>
                             <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="btn_edit('.$item["id"].')" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>
                         </div>
                     </div>
@@ -45,4 +46,38 @@ function getInstruments(){
         $_SESSION['Failed'] = "You dont have any carte!!!";
         unset($_SESSION['Failed']);
     }
+}
+
+//============================
+//Login
+//Sign IN
+function signinUser(){
+    global $conn;
+
+    //Get data from form
+    $email      = $_POST['email'];
+    $password   = $_POST['password'];
+
+    //Check inputs form if empty
+    if($email    === "" 
+    || $password === ""){
+        $_SESSION['Failed'] = "Fill in the blanks as appropriate!";
+        header("location: Login/register.php");
+    }else{
+        //Sql Query
+        $requete = "SELECT * FROM users 
+        WHERE email = '$email' 
+        and password = '$password'";
+        $data = mysqli_query($conn,$requete);
+
+        //Check if you find any user on db
+        if(mysqli_num_rows($data) === 1){
+            $row = mysqli_fetch_assoc($data);  
+            $_SESSION['user'] = $row;
+            header("location: user/index.php");
+        }else{
+            $_SESSION['Failed'] = "Email or Password not correct!";
+            header("location: Login/sign_in.php");
+        }
+    }   
 }

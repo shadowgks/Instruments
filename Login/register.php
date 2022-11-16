@@ -93,43 +93,51 @@
                       </div>
                     <?php endif ?>
 
-                  <form class="mx-1 mx-md-4" method="POST" action="../scripts.php" name="form-register" id="form-register" data-parsley-validate>
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-user fa-lg me-3 mt-4 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
+                  <form class="mx-1 mx-md-4" method="POST" action="../scripts.php" name="form-register" enctype="multipart/form-data" id="form-register" data-parsley-validate>
+                    <div class="d-flex align-items-center mb-4">
+                      <i class="fas fa-user me-3 mt-4"></i>
+                      <div class="form-outline flex-fill">
                         <label class="form-label" for="form3Example1c">Your Name</label>
                         <input type="text" name="yourname" id="form3Example1c" class="form-control" data-parsley-trigger="keyup" data-parsley-length="[2, 30]" required/>
                       </div>
                     </div>
   
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-envelope fa-lg me-3 mt-4 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
+                    <div class="d-flex align-items-center mb-4">
+                      <i class="fas fa-envelope me-3 mt-4"></i>
+                      <div class="form-outline flex-fill">
                         <label class="form-label" for="form3Example3c">Your Email</label>
                         <input type="email" name="email" id="form3Example3c" class="form-control" data-parsley-trigger="keyup" data-parsley-pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$" required/>
                       </div>
                     </div>
   
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-lock fa-lg me-3 mt-4 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
+                    <div class="d-flex align-items-center mb-4">
+                      <i class="fas fa-lock me-3 mt-4"></i>
+                      <div class="form-outline flex-fill">
                         <label class="form-label" for="form3Example4c">Password</label>
                         <input type="password" name="password" id="password" class="form-control" data-parsley-trigger="keyup" data-parsley-minlength="8" required/>
                       </div>
                     </div>
 
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-key fa-lg me-3 mt-4 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
+                    <div class="d-flex align-items-center mb-4">
+                      <i class="fas fa-key me-3 mt-4"></i>
+                      <div class="form-outline flex-fill">
                         <label class="form-label" for="form3Example4cd">Repeat Your Password</label>
                         <input type="password" name="password-confirme" id="password-confirme" class="form-control" data-parsley-trigger="keyup" data-parsley-equalto="#password" data-parsley-minlength="8" required/>
                       </div>
                     </div>
-  
+
+                    <div class="d-flex align-items-center mb-4">
+                      <i class="bi bi-image me-3 mt-4"></i>
+                      <div class="form-outline flex-fill">
+                        <label class="form-label" for="form3Example4cd">Picture (Optionnel)</label>
+                        <input type="file" name="picture" class="form-control" id="picture" accept="image/png, image/jpeg">
+                      </div>
+                    </div>
+
                     <div class="form-check d-flex justify-content-center mb-3">
                       <input class="form-check-input me-2" type="checkbox" id="form2Example3c"/>
-                      <label class="form-check-label" for="form2Example3">
-                        I agree all statements in <a href="#!" class="" style="color: #E1B09E;">Terms of service</a>
+                      <label class="form-check-label">
+                        I agree all statements in <a style="color: #E1B09E;">Terms of service</a>
                       </label>
                     </div>
   

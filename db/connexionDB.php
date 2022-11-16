@@ -11,10 +11,6 @@
     // Check connection
     if (!$conn) {
         echo "Connection failed: ";
-        exit();
-    }else{
-        echo "Connected successfully";
-        
+        die();
     }
-    
 ?>
