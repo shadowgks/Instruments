@@ -8,7 +8,8 @@ function getInstruments($id_user){
     $requete = "SELECT instruments.*, users.id AS 'UserID', fammiles.name AS 'NameFammiles' 
     FROM instruments join fammiles join users
     on instruments.fammille_id = fammiles.id
-    and users.id = $id_user";
+    and instruments.user_id = users.id
+    where users.id = '$id_user'";
     $data = mysqli_query($conn,$requete);
     if(mysqli_num_rows($data) > 0){
         foreach($data as $item){

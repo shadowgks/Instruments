@@ -70,8 +70,8 @@
                           <!-- session name user -->
                             <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown">
                               <?php 
-                              //Get name user
-                              echo $_SESSION['user']['name'];
+                                //Get name user
+                                echo $_SESSION['user']['name'];
                               ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">

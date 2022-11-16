@@ -7,7 +7,7 @@ function updateInstrument(){
     //Get data from form
     $id_instrument    = intval($_POST['id_instrument']);
     $title            = $_POST['title'];
-    //Upload img
+//Upload img
     //-----------------------------------------------
     $picture_name    = $_FILES['picture']['name'];
     $tmp_picture_name = $_FILES['picture']['tmp_name'];
@@ -17,9 +17,9 @@ function updateInstrument(){
     $new_unique_name= uniqid('',true).".".$imageExt;
     //check picture
     if(!$_FILES['picture']['name'] == ""){
-        $distination_file = 'assets/img/upload/'.$new_unique_name;
+        $distination_file = 'assets/img/upload/instruments/'.$new_unique_name;
     }else{
-        $distination_file = 'assets/img/upload/default/default_picture.png';
+        $distination_file = 'assets/img/upload/instruments/default/default_picture.png';
     }
     //Func upload picture
     move_uploaded_file($tmp_picture_name,$distination_file);
