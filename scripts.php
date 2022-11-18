@@ -1,10 +1,11 @@
 <?php
 //INCLUDE DATABASE FILE
 include("db/connexionDB.php");
-include("crud/add.php");
-include("crud/delete.php");
-include("crud/edit.php");
-include("crud/show.php");
+include("cruds/add.php");
+include("cruds/delete.php");
+include("cruds/edit.php");
+include("cruds/read.php");
+include("cruds/search.php");
 
 //SESSSION IS A WAY TO STORE DATA TO BE USED ACROSS MULTIPLE PAGES
 session_start();
@@ -28,6 +29,9 @@ if(isset($_POST['update'])){
 if(isset($_POST['delete'])){
     deleteInstrument();
 }
+// if(isset($_GET['search'])){
+//     searchInstrument($_SESSION['user']['id']);
+// }
 
 //Check if user went to sign out
 if(isset($_GET['sign_out'])){

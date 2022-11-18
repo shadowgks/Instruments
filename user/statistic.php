@@ -14,6 +14,7 @@
     <title>Instruments</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- =============================================================== -->
+
     <!-- BEGIN FontAwesomme-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- BEGIN FontAwesomme-->
@@ -67,7 +68,7 @@
             <form class="navbar-nav">
                 <ul class="navbar-nav">
                   <!-- IMG USER -->
-                  <img src="../<?php echo $_SESSION['user']['img'] ?>" class="rounded-circle" height="40" width="40" alt="">
+                  <div class="rounded-circle" style="background-image: url('../<?php echo $_SESSION['user']['img']?>'); width: 40px; height: 40px; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
                   <!-- Dropdown user -->
                   <li class="nav-item dropdown">
                       <!-- session name user -->
@@ -109,49 +110,115 @@
 
     <!-- BEGIN Statistic --> 
     <div class="container statistic">
-    <div class="row">
-        <div class="col-md-4 col-xl-3">
+      <div class="row mt-5">
+        <h1 class="text-center">STATISTIC USERS</h1>
+        <hr class="mt-5">
+          <div class="col-md-4 col-xl-3">
             <div class="card bg-c-blue order-card">
-                <div class="card-block">
-                    <h6 class="m-b-20">Orders Received</h6>
-                    <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>486</span></h2>
-                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                <div class="card-block text-center text-sm-end">
+                    <h6 class="m-b-20">USERS</h6>
+                    <h2 class="text-right"><i class="fa fa-user f-left"></i>
+                        <span>
+                          <?php
+                            //SQL query
+                            $requete = "SELECT count(*) AS 'countUsers' FROM users";
+                            $data = mysqli_query($conn,$requete);
+
+                            //fetch data
+                            $row = mysqli_fetch_assoc($data);
+                            if($row > 0){
+                              echo "$row[countUsers]"."+";
+                            }else{
+                              echo "0";
+                            }
+                          ?>
+                        </span>
+                    </h2>
                 </div>
             </div>
-        </div>
+          </div>
         
-        <div class="col-md-4 col-xl-3">
+          <div class="col-md-4 col-xl-3">
             <div class="card bg-c-green order-card">
-                <div class="card-block">
-                    <h6 class="m-b-20">Orders Received</h6>
-                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>486</span></h2>
-                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                <div class="card-block text-center text-sm-end">
+                    <h6 class="m-b-20">Instruments</h6>
+                    <h2 class="text-right"><i class="bi bi-music-note-list f-left"></i>
+                      <span>
+                        <?php
+                          //SQL query
+                          $requete = "SELECT count(*) AS 'countInstrument' FROM instruments";
+                          $data = mysqli_query($conn,$requete);
+
+                          //fetch data
+                          $row = mysqli_fetch_assoc($data);
+                          if($row > 0){
+                            echo "$row[countInstrument]"."+";
+                          }else{
+                            echo "0";
+                          }
+                        ?>
+                      </span>
+                    </h2>
                 </div>
             </div>
-        </div>
+          </div>
         
-        <div class="col-md-4 col-xl-3">
+          <div class="col-md-4 col-xl-3">
             <div class="card bg-c-yellow order-card">
-                <div class="card-block">
-                    <h6 class="m-b-20">Orders Received</h6>
-                    <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>486</span></h2>
-                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                <div class="card-block text-center text-sm-end">
+                    <h6 class="m-b-20">Price DH</h6>
+                    <h2 class="text-right"><i class="bi bi-cash-coin f-left"></i>
+                    <span>
+                      <?php
+                          //SQL query
+                          $requete = "SELECT SUM(price) AS 'countPrice' FROM instruments";
+                          $data = mysqli_query($conn,$requete);
+
+                          //fetch data
+                          $row = mysqli_fetch_assoc($data);
+                          if($row > 0){
+                            echo "$row[countPrice]"."+";
+                          }else{
+                            echo "0";
+                          }
+                        ?>
+                    </span>
+                  </h2>
                 </div>
             </div>
-        </div>
+          </div>
         
-        <div class="col-md-4 col-xl-3">
+          <div class="col-md-4 col-xl-3">
             <div class="card bg-c-pink order-card">
-                <div class="card-block">
-                    <h6 class="m-b-20">Orders Received</h6>
-                    <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>486</span></h2>
-                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                <div class="card-block text-center text-sm-end">
+                    <h6 class="m-b-20">Quantity</h6>
+                    <h2 class="text-right"><i class="fa fa-refresh f-left"></i>
+                      <span>
+                        <?php
+                            //SQL query
+                            $requete = "SELECT SUM(qnt) AS 'countQnt' FROM instruments";
+                            $data = mysqli_query($conn,$requete);
+
+                            //fetch data
+                            $row = mysqli_fetch_assoc($data);
+                            if($row > 0){
+                              echo "$row[countQnt]"."+";
+                            }else{
+                              echo "0";
+                            }
+                          ?>
+                      </span>
+                    </h2>
                 </div>
             </div>
+          </div>
+	    </div>
+      <div class="row">
+        <div class="col">
+          <img src="../assets/img/svg/statistic/statistic.svg">
         </div>
-        
-	</div>
-</div>
+      </div>
+    </div>
     <!-- END Statistic --> 
 
     <!-- BEGIN FOOTER -->

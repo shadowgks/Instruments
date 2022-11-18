@@ -64,7 +64,7 @@
                 <form class="navbar-nav">
                     <ul class="navbar-nav">
                       <!-- IMG USER -->
-                      <img src="<?php echo $_SESSION['user']['img'] ?>" class="rounded-circle" height="40" width="40" alt="">
+                      <div class="rounded-circle" style="background-image: url('<?php echo $_SESSION['user']['img']?>'); width: 40px; height: 40px; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
                       <!-- Dropdown user -->
                       <li class="nav-item dropdown">
                           <!-- session name user -->

@@ -3,7 +3,8 @@
 //Read
 function getInstruments($id_user){
     global $conn;
-    //
+
+
     //Sql Query
     $requete = "SELECT instruments.*, fammiles.name AS 'NameFammiles' 
     FROM instruments join fammiles join users
@@ -24,7 +25,7 @@ function getInstruments($id_user){
             price        = "'.$item["price"].'"
             description  = "'.$item["description"].'">
                     <div class="card shadow">
-                        <img src="../'.$item["img"].'" class="card-img-top" height="330" alt="...">
+                    <div style="background-image: url(../'.$item["img"].'); height: 40vh; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>                        
                         <div class="card-body">
                             <h5 class="card-title">'.$item["name"].'</h5>
                             <h6 class="card-subtitle mb-2 text-muted">'.$item["NameFammiles"].'</h6>
@@ -44,10 +45,12 @@ function getInstruments($id_user){
         }
     }else{
         echo '
-        <div class="alert alert-danger">
-            <h4 class="alert-heading">Hello Dear!</h4>
-            <hr>
-            <p>You don\'t have any instruments.</p>
+        <div class="col-12">
+            <div class="alert alert-danger">
+                <h4 class="alert-heading">Hello Dear!</h4>
+                <hr>
+                <p>You don\'t have any instruments.</p>
+            </div>
         </div>
         ';
     }
@@ -64,8 +67,8 @@ function signinUser(){
     $password    = $_POST['password'];
 
     //Check inputs form if empty
-    if($email    === "" 
-    || $password === ""){
+    if(empty($email) 
+    || empty($password)){
         $_SESSION['Failed'] = "Fill in the blanks as appropriate!";
         header("location: Login/register.php");
     }else{

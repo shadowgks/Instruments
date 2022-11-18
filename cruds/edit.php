@@ -18,9 +18,8 @@ function updateInstrument(){
         $distination_file = 'assets/img/upload/instruments/'.$new_unique_name;
     }else{
         $get_img = mysqli_query($conn,"SELECT img FROM instruments WHERE id = $id_instrument");
-        foreach($get_img as $item){
-            $distination_file = $item["img"];
-        }
+        $row = mysqli_fetch_assoc($get_img);
+        $distination_file = $row["img"];
     }
     //Func upload picture
     move_uploaded_file($tmp_picture_name,$distination_file);
@@ -32,25 +31,25 @@ function updateInstrument(){
     $description      = $_POST['description'];
 
     //Check inputs form if empty
-    if($title        === "" 
-    || $fammllies    === "Please Select"
-    || $date         === ""
-    || $price        === ""
-    || $quantities   === ""
-    || $description  === ""){
+    if(empty($title)
+    || empty($fammllies)
+    || empty($date)
+    || empty($price)
+    || empty($quantities)
+    || empty($description)){
         $_SESSION['Failed'] = "Fill in the blanks as appropriate!";
         header("location: user/index.php");
     }else{
         //Added instruments
         $requete = "UPDATE instruments 
-        SET name        = '$title', 
-            img         = '$distination_file', 
-            description = '$description', 
-            date        = '$date', 
-            qnt         = '$quantities', 
-            price       = '$price', 
-            fammille_id = '$fammllies'
-        WHERE id        = $id_instrument"; 
+        SET   `name`        = '$title', 
+              `img`         = '$distination_file', 
+              `description` = '$description', 
+              `date`        = '$date', 
+              `qnt`         = '$quantities', 
+              `price`       = '$price', 
+              `fammille_id` = '$fammllies'
+        WHERE `id`          =  $id_instrument"; 
         $data = mysqli_query($conn,$requete);
         if($data){
             $_SESSION['Success'] = "Updated Instrument";

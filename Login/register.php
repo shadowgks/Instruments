@@ -93,7 +93,7 @@
                       </div>
                     <?php endif ?>
 
-                  <form class="mx-1 mx-md-4" method="POST" action="../scripts.php" name="form-register" enctype="multipart/form-data" id="form-register">
+                  <form class="mx-1 mx-md-4" method="POST" action="../scripts.php" name="form-register" enctype="multipart/form-data" id="form-register" data-parsley-validate>
                     <div class="d-flex align-items-center mb-4">
                       <i class="fas fa-user me-3 mt-4"></i>
                       <div class="form-outline flex-fill">

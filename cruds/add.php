@@ -39,7 +39,7 @@ function saveInstrument(){
         header("location: user/index.php");
     }else{
         //Added instruments
-        $requete = "INSERT INTO instruments(name, img, description, date, qnt, price, fammille_id, user_id) 
+        $requete = "INSERT INTO instruments(`name`, `img`, `description`, `date`, `qnt`, `price`, `fammille_id`, `user_id`) 
         VALUES ('$title','$distination_file','$description','$date','$quantities','$price','$fammllies','$id_user')";
 
         $data = mysqli_query($conn,$requete);
@@ -89,7 +89,7 @@ function regestreUser(){
         header("location: Login/register.php");
     }else{
         //Sql Query
-        $checkEmail = "SELECT * FROM users WHERE email = '$email'";
+        $checkEmail = "SELECT * FROM `users` WHERE `email` = '$email'";
         $data = mysqli_query($conn,$checkEmail);
         //Execute sql query check num email on db
         if(mysqli_num_rows($data) > 0){

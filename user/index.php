@@ -67,7 +67,7 @@
             <form class="navbar-nav">
                 <ul class="navbar-nav">
                   <!-- IMG USER -->
-                  <img src="../<?php echo $_SESSION['user']['img'] ?>" class="rounded-circle" height="40" width="40" alt="">
+                  <div class="rounded-circle" style="background-image: url('../<?php echo $_SESSION['user']['img']?>'); width: 40px; height: 40px; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
                   <!-- Dropdown user -->
                   <li class="nav-item dropdown">
                       <!-- session name user -->
@@ -133,8 +133,8 @@
           <?php endif ?>
           
           <div class="d-flex justify-content-between">
-            <form class="d-flex w-50" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex w-50" method="GET" data-parsley-validate>
+              <input class="form-control me-2" type="search" name="search" placeholder="Search" required>
               <button class="btn btn-outline-warning text-dark" type="submit">Search</button>
             </form>
             <!-- Button trigger modal -->
@@ -151,13 +151,18 @@
       <div class="container min-vh-100">
         <div class="row">
           <!-- Show info instruments -->
-          <?php getInstruments($_SESSION['user']['id']);?>  
+          <?php 
+            $id_user = $_SESSION['user']['id'];
+            getInstruments($id_user);
+           ?> 
         </div>
 	    </div>
     </section>
     <!-- END Card Instrument -->
     <!-- END Instruments -->
 
+  <!-- BEGIN Form -->
+  <form action="../scripts.php" method="POST" name="form_instrument" id="form_instrument" enctype="multipart/form-data" data-parsley-validate>
     <!-- BEGIN Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -166,8 +171,6 @@
             <h1 class="modal-title fs-5" id="staticBackdropLabel">INSTRUMENTS</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <!-- BEGIN Form -->
-          <form action="../scripts.php" method="POST" name="form_instrument" id="form_instrument" enctype="multipart/form-data" data-parsley-validate>
           <div class="modal-body">
             <input type="hidden" name="id_instrument">
             <input type="hidden" name="id_user" value="<?php echo $_SESSION['user']['id']?>">
@@ -219,18 +222,38 @@
                 required></textarea>
             </div>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn text-dark rounded-0" style="border: 1px solid #E1B09E;" data-bs-dismiss="modal">Close</button>
-            <button type="submit" name="delete" id="delete" class="btn btn-danger w-25 rounded-0">Delete</button>
-            <button type="submit" name="update" id="update" class="btn btn-success w-25 rounded-0">Update</button>
+            <button type="button" id="delete" class="btn btn-danger w-25 rounded-0" data-bs-toggle="modal" href="#exampleModalToggle">Delete</button>
+            <button type="button" id="update" class="btn btn-success w-25 rounded-0" data-bs-toggle="modal" href="#exampleModalToggle">Update</button>
             <button type="submit" name="save" id="save" class="btn btn-dark w-25 rounded-0">Save</button>
           </div>
-        </form>
-        <!-- END Form -->
         </div>
       </div>
     </div>
     <!-- END Modal -->
+
+    <!-- BEGIN Modal 2 -->
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Are you sure!</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center display-5 text-danger">
+            <i class="fa-solid fa-circle-exclamation"></i>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" id="save_confirme_m2" class="btn btn-warning" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Save chenges</button>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </form>
+    <!-- END Modal 2 -->
+    <!-- END Form -->
 
     <!-- BEGIN FOOTER -->
     <footer id="footer" class="bg-black text-white text-center">

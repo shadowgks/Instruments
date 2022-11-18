@@ -31,3 +31,11 @@ function btn_add(){
     //Reset form
     form_instrument.reset();
 };
+
+//Modal 2 Confirmer if you user need update or delete
+document.getElementById("delete").addEventListener("click",()=>{
+    document.getElementById("save_confirme_m2").setAttribute("name","delete");
+})
+document.getElementById("update").addEventListener("click",()=>{
+    document.getElementById("save_confirme_m2").setAttribute("name","update");
+})
