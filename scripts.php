@@ -33,6 +33,13 @@ if(isset($_POST['delete'])){
 //     searchInstrument($_SESSION['user']['id']);
 // }
 
+//============================
+//Edit Profile
+if(isset($_POST['update_profile'])){
+    updateProfile();
+}
+
+
 //Check if user went to sign out
 if(isset($_GET['sign_out'])){
     //unset & destroy session user
