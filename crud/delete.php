@@ -9,9 +9,9 @@ function deleteInstrument(){
     intval($id_instrument);
 
     //delete instruments
-    $requete = "DELETE FROM instruments
-    WHERE id = $id_instrument";
-    $data = mysqli_query($conn,$requete);
+    $requete       = "DELETE FROM instruments
+    WHERE id       = $id_instrument";
+    $data          = mysqli_query($conn,$requete);
     if($data){
         $_SESSION['Success'] = "Deleted Instrument";
         header("location: user/index.php");

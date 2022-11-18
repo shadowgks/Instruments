@@ -7,19 +7,20 @@ function updateInstrument(){
     //Get data from form
     $id_instrument    = intval($_POST['id_instrument']);
     $title            = $_POST['title'];
-//Upload img
+    //Upload img
     //-----------------------------------------------
-    $picture_name    = $_FILES['picture']['name'];
+    $picture_name     = $_FILES['picture']['name'];
     $tmp_picture_name = $_FILES['picture']['tmp_name'];
-    //???
-    $tabExt=explode('.',$picture_name,2);
-    $imageExt=strtolower(end($tabExt));
-    $new_unique_name= uniqid('',true).".".$imageExt;
+    //unique id img
+    $new_unique_name= uniqid('',true).$picture_name;
     //check picture
     if(!$_FILES['picture']['name'] == ""){
         $distination_file = 'assets/img/upload/instruments/'.$new_unique_name;
     }else{
-        $distination_file = 'assets/img/upload/instruments/default/default_picture.png';
+        $get_img = mysqli_query($conn,"SELECT img FROM instruments WHERE id = $id_instrument");
+        foreach($get_img as $item){
+            $distination_file = $item["img"];
+        }
     }
     //Func upload picture
     move_uploaded_file($tmp_picture_name,$distination_file);

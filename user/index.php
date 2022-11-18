@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instruments</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- =============================================================== -->
     <!-- BEGIN FontAwesomme-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -31,8 +32,9 @@
     <!-- END parsley css-->
 
     <!-- BEGIN style css-->
-    <link rel="stylesheet" href="..assets\css\style.css">
+    <link rel="stylesheet" href="..assets/css/style.css">
     <!-- END style css-->
+
     <!-- =============================================================== -->
 </style>
 </head>
@@ -130,19 +132,17 @@
               </div>
           <?php endif ?>
           
-        <!-- BEGIN Button trigger modal -->
-          <div class="d-grid gap-2">
-            <button class="btn btn-dark rounded-0 shadow" onclick="btn_add()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-              ADD <i class="bi bi-plus-square"></i></i></button>
+          <div class="d-flex justify-content-between">
+            <form class="d-flex w-50" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-warning text-dark" type="submit">Search</button>
+            </form>
+            <!-- Button trigger modal -->
+            <div class="gap-2">
+              <button class="btn btn-dark rounded-0 shadow px-5 " onclick="btn_add()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                ADD <i class="bi bi-plus-square"></i></i></button>
+            </div>
           </div>
-        <!-- END Btn add -->
-        </div>
-        <div class="row d-flex justify-content-center">
-          <form class="d-flex w-50" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
       </div>
     </section>
 
@@ -151,9 +151,9 @@
       <div class="container min-vh-100">
         <div class="row">
           <!-- Show info instruments -->
-          <?php getInstruments($_SESSION['user']['id']); ?>  
+          <?php getInstruments($_SESSION['user']['id']);?>  
         </div>
-      </div>
+	    </div>
     </section>
     <!-- END Card Instrument -->
     <!-- END Instruments -->
@@ -183,11 +183,16 @@
               <label for="exampleInputTitle3" class="form-label">Fammllies</label>
               <select name="fammllies" id="fammllies" class="form-select" required>
                 <option value="Please Select" selected disabled>Please Select</option>
-                <option value="1">Bois</option>
-                <option value="2">Clavirs</option>
-                <option value="3">Cordes</option>
-                <option value="4">Cuivres</option>
-                <option value="5">Percussions</option>
+                <!-- BEGIN PART PHP -->
+                <?php 
+                  //Get donnez table fammiles
+                  $requete = "SELECT * FROM fammiles";
+                  $data = mysqli_query($conn,$requete);
+                  foreach($data as $item){
+                    echo '<option value="'.$item["id"].'">'.$item["name"].'</option>';
+                  }
+                ?>
+                <!-- END PART PHP -->
                 </select>
             </div>
             <div class="mb-3">

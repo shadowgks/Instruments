@@ -3,36 +3,35 @@
 //Read
 function getInstruments($id_user){
     global $conn;
-
+    //
     //Sql Query
-    $requete = "SELECT instruments.*, users.id AS 'UserID', fammiles.name AS 'NameFammiles' 
+    $requete = "SELECT instruments.*, fammiles.name AS 'NameFammiles' 
     FROM instruments join fammiles join users
-    on instruments.fammille_id = fammiles.id
-    and instruments.user_id = users.id
-    where users.id = '$id_user'";
+    on  instruments.fammille_id = fammiles.id
+    and instruments.user_id     = users.id
+    where users.id              = '$id_user'";
     $data = mysqli_query($conn,$requete);
     if(mysqli_num_rows($data) > 0){
         foreach($data as $item){
             echo '
             <div class="col-lg-3 col-md-6 col-sm-6 pb-3"
-            id           = '.$item["id"].'
-            title        = '.$item["name"].'
-            picture      = '.$item["img"].'
-            fammiles-id  = '.$item["fammille_id"].'
-            date         = '.$item["date"].'
-            qnt          = '.$item["qnt"].'
-            price        = '.$item["price"].'
-            description  = '.$item["description"].'
-            id_user      = '.$item["UserID"].'>
+            id           = "'.$item["id"].'"
+            title        = "'.$item["name"].'"
+            picture      = "'.$item["img"].'"
+            fammiles-id  = "'.$item["fammille_id"].'"
+            date         = "'.$item["date"].'"
+            qnt          = "'.$item["qnt"].'"
+            price        = "'.$item["price"].'"
+            description  = "'.$item["description"].'">
                     <div class="card shadow">
                         <img src="../'.$item["img"].'" class="card-img-top" height="330" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">'.$item["name"].'</h5>
                             <h6 class="card-subtitle mb-2 text-muted">'.$item["NameFammiles"].'</h6>
-                            <p class="card-text">'.$item["description"].'</p>
+                            <p class="card-text text-truncate" title='.$item["description"].'>'.$item["description"].'</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item ">Date: <span class="text-muted">'.$item["date"].'</span></li>
+                            <li class="list-group-item">Date: <span class="text-muted">'.$item["date"].'</span></li>
                             <li class="list-group-item">Quantities: <span class="text-muted">'.$item["qnt"].'</span></li>
                             <li class="list-group-item">Price: <span class="text-muted">'.$item["price"].'DH</span></li>
                         </ul>
@@ -44,8 +43,13 @@ function getInstruments($id_user){
             </div>';
         }
     }else{
-        $_SESSION['Failed'] = "You dont have any carte!!!";
-        unset($_SESSION['Failed']);
+        echo '
+        <div class="alert alert-danger">
+            <h4 class="alert-heading">Hello Dear!</h4>
+            <hr>
+            <p>You don\'t have any instruments.</p>
+        </div>
+        ';
     }
 }
 
@@ -56,8 +60,8 @@ function signinUser(){
     global $conn;
 
     //Get data from form
-    $email      = $_POST['email'];
-    $password   = $_POST['password'];
+    $email       = $_POST['email'];
+    $password    = $_POST['password'];
 
     //Check inputs form if empty
     if($email    === "" 

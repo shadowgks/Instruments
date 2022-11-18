@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instruments</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- =============================================================== -->
     <!-- BEGIN FontAwesomme-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -24,7 +25,18 @@
     <!-- BEGIN Bootstrap icons-->
     <link rel="stylesheet" href="../assets/bootstrap-icons/bootstrap-icons.css">
     <!-- END Bootstrap icons-->
+
+    <!-- BEGIN parsley css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css">
+    <!-- END parsley css-->
+
+    <!-- BEGIN style css-->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- END style css-->
+
     <!-- =============================================================== -->
+</style>
 </head>
 <body>
     <!-- BEGIN APP -->
@@ -34,7 +46,7 @@
     <nav class="navbar navbar-expand-lg" style="background-color: #FAF2EE;">
         <div class="container-fluid px-lg-5">
           <a class="navbar-brand" href="../index.php">
-            <img src="assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
+            <img src="../assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
@@ -42,57 +54,106 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php#ABOUT_US">About US</a>
+                <a class="nav-link" href="../index.php#ABOUT_US">About US</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php#CONTACT_US">Contact US</a>
+                <a class="nav-link" href="../index.php#CONTACT_US">Contact US</a>
               </li>
             </ul>
             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <form class="navbar-nav">
                 <ul class="navbar-nav">
-                    <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                      MENU
-                    </a>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          SAAD MOUMOU
+                  <!-- IMG USER -->
+                  <img src="../<?php echo $_SESSION['user']['img'] ?>" class="rounded-circle" height="40" width="40" alt="">
+                  <!-- Dropdown user -->
+                  <li class="nav-item dropdown">
+                      <!-- session name user -->
+                        <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown">
+                          <?php 
+                          //Get name user
+                          echo $_SESSION['user']['name'];
+                          ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                          <li><a class="dropdown-item" href="#">SIGN OUT</a></li>
+                          <li><button type="submit" name="sign_out" class="dropdown-item">Sign out</button></li>
                         </ul>
-                    </li>
+                  </li>
+                  <!-- Btn Menu -->
+                  <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
+                    MENU
+                  </a>
                 </ul>
+              </form>
             </div>
           </div>
         </div>
       </nav>
     <!-- END NAVBAR -->
 
-    <!-- BEGIN MEMU -->
+    <!-- BEGIN SIDEBAR MEMU -->
     <div class="offcanvas offcanvas-start py-5" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">MENU</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body w-100">
-      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php">Instruments</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php">Instruments</a>
           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Statistic</a>
       </div>
     </div>
-    <!-- END MENU -->
+    <!-- END SIDEBAR MENU -->
     <!-- END HEADER --> 
 
-    <!-- BEGIN statistic -->
-    <section class="py-5">
-      <div class="container">
-    
-      </div>
-    </section>
-    <!-- END statistic -->
-    
+    <!-- BEGIN Statistic --> 
+    <div class="container statistic">
+    <div class="row">
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Orders Received</h6>
+                    <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>486</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Orders Received</h6>
+                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>486</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Orders Received</h6>
+                    <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>486</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-pink order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Orders Received</h6>
+                    <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>486</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+        
+	</div>
+</div>
+    <!-- END Statistic --> 
+
     <!-- BEGIN FOOTER -->
     <footer id="footer" class="bg-black text-white text-center">
         <div class="container py-5">
@@ -114,13 +175,23 @@
     <!-- END FOOTER -->
     <!-- END APP -->
 
-    <!-- BEGIN Bootstrap js -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <!-- END Bootstrap js-->
     <!-- =============================================================== -->
+    <!-- BEGIN Bootstrap js -->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- END Bootstrap js-->
+
+    <!-- BEGIN jquery js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- END jquery js-->
+
+    <!-- BEGIN parsley js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- END parsley js-->
+
     <!-- BEGIN js scripts -->
-    <script src="scripts.js"></script>
+    <script src="../scripts.js"></script>
     <!-- END js scripts -->
+    <!-- =============================================================== -->
 </body>
 </html>
 <?php 
