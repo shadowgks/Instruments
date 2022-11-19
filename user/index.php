@@ -92,6 +92,7 @@
         </div>
       </nav>
     <!-- END NAVBAR -->
+
     <!-- BEGIN SIDEBAR MEMU -->
     <div class="offcanvas offcanvas-start py-5" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
@@ -101,6 +102,7 @@
       <div class="offcanvas-body w-100">
           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php">Instruments</a>
           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Statistic</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Profile</a>
       </div>
     </div>
     <!-- END SIDEBAR MENU -->
@@ -161,8 +163,8 @@
     <!-- END Card Instrument -->
     <!-- END Instruments -->
 
-  <!-- BEGIN Form -->
-  <form action="../scripts.php" method="POST" name="form_instrument" id="form_instrument" enctype="multipart/form-data" data-parsley-validate>
+    <!-- BEGIN Form -->
+    <form action="../scripts.php" method="POST" name="form_instrument" id="form_instrument" enctype="multipart/form-data" data-parsley-validate>
     <!-- BEGIN Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -251,7 +253,7 @@
         </div>
       </div> 
     </div>
-  </form>
+    </form>
     <!-- END Modal 2 -->
     <!-- END Form -->
 

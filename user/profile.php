@@ -101,6 +101,7 @@
       <div class="offcanvas-body w-100">
           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php">Instruments</a>
           <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Statistic</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Profile</a>
       </div>
     </div>
     <!-- END SIDEBAR MENU -->
