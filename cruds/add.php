@@ -26,7 +26,7 @@ function saveInstrument(){
     $price                = $_POST['price'];
     $quantities           = $_POST['quantities'];
     $description          = str_replace("'","\'",$_POST['description']);
-    $id_user              = $_POST['id_user'];
+    $id_user              = $_SESSION['user']['id'];
 
     //Check inputs form if empty
     if(empty($title)

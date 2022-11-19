@@ -1,41 +1,40 @@
 <?php
 
-// function searchInstrument($id_user){
-//     global $conn;
-//     //Get data from form
-//     $search = $_GET["search"];
+function searchInstrument(){
+    global $conn;
+    //Get data from form
+    $search = $_GET["search"];
+    $id_user = $_SESSION['user']['id'];
 
-//     //SQL query
-//     $requete = "SELECT instruments.*, fammiles.name AS 'NameFammiles' 
-//     FROM  instruments join fammiles join users
-//     on    instruments.fammille_id = fammiles.id
-//     and   instruments.user_id     = users.id 
-//     and   instruments.name LIKE  '%a'";
+    //SQL query
+    $requete = "SELECT instruments.*, fammiles.name AS 'NameFammiles' 
+    FROM  instruments join fammiles join users
+    on    instruments.fammille_id = fammiles.id
+    and   instruments.user_id     = users.id 
+    and   instruments.user_id     = '$id_user'
+    and   instruments.name LIKE  '%$search%'";
     
-//     $data = mysqli_query($conn,$requete);
-//     while($item = mysqli_fetch_assoc($data)){
-
-   
-
-//         echo '
-//         <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
-//                 <div class="card shadow">
-//                     <img src="../'.$item["img"].'" class="card-img-top" height="330" alt="...">
-//                     <div class="card-body">
-//                         <h5 class="card-title">'.$item["name"].'</h5>
-//                         <h6 class="card-subtitle mb-2 text-muted">'.$item["NameFammiles"].'</h6>
-//                         <p class="card-text text-truncate" title='.$item["description"].'>'.$item["description"].'</p>
-//                     </div>
-//                     <ul class="list-group list-group-flush">
-//                         <li class="list-group-item">Date: <span class="text-muted">'.$item["date"].'</span></li>
-//                         <li class="list-group-item">Quantities: <span class="text-muted">'.$item["qnt"].'</span></li>
-//                         <li class="list-group-item">Price: <span class="text-muted">'.$item["price"].'DH</span></li>
-//                     </ul>
-//                     <div class="p-2 d-flex justify-content-between">
-//                         <button class="btn btn-dark p-2 w-100 me-3"><i class="fa-solid fa-cart-shopping"></i></button>
-//                         <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="btn_edit('.$item["id"].')" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>
-//                     </div>
-//                 </div>
-//         </div>';
-//     }
-// }
+    $data = mysqli_query($conn,$requete);
+    while($row = mysqli_fetch_assoc($data)){
+        echo '
+        <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
+                <div class="card shadow">
+                    <img src="../'.$row["img"].'" class="card-img-top" height="330" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">'.$row["name"].'</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">'.$row["NameFammiles"].'</h6>
+                        <p class="card-text text-truncate" title='.$row["description"].'>'.$row["description"].'</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Date: <span class="text-muted">'.$row["date"].'</span></li>
+                        <li class="list-group-item">Quantities: <span class="text-muted">'.$row["qnt"].'</span></li>
+                        <li class="list-group-item">Price: <span class="text-muted">'.$row["price"].'DH</span></li>
+                    </ul>
+                    <div class="p-2 d-flex justify-content-between">
+                        <button class="btn btn-dark p-2 w-100 me-3"><i class="fa-solid fa-cart-shopping"></i></button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="btn_edit('.$row["id"].')" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </div>
+                </div>
+        </div>';
+    }
+}

@@ -105,11 +105,11 @@ function updateProfile(){
               `password`    = '$password', 
               `img`         = '$distination_file'
         WHERE `id`          =  $id_user"; 
+
+        //SQL QUERY
         $data = mysqli_query($conn,$requete);
+        $row = mysqli_fetch_assoc($data);
         if($data){
-            $row = mysqli_fetch_assoc($data);
-            //ineed have to fix this
-            session_destroy();
             $_SESSION['user'] = $row;
             $_SESSION['Success'] = "Updated Your Profile";
             header("location: user/profile.php");

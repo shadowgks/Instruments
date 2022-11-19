@@ -25,6 +25,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/doc/assets/docs.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css">
     <!-- END parsley css-->
+
+    <!-- BEGIN Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- END Font -->
+
+    <!-- BEGIN style css-->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- END style css-->
     <!-- =============================================================== -->
 </head>
 <body>

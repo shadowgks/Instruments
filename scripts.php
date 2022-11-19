@@ -29,9 +29,6 @@ if(isset($_POST['update'])){
 if(isset($_POST['delete'])){
     deleteInstrument();
 }
-// if(isset($_GET['search'])){
-//     searchInstrument($_SESSION['user']['id']);
-// }
 
 //============================
 //Edit Profile

@@ -1,9 +1,9 @@
 <?php
 
 //Read
-function getInstruments($id_user){
+function getInstruments(){
     global $conn;
-
+    $id_user = $_SESSION['user']['id'];
 
     //Sql Query
     $requete = "SELECT instruments.*, fammiles.name AS 'NameFammiles' 
@@ -79,7 +79,7 @@ function signinUser(){
         $data = mysqli_query($conn,$requete);
 
         //Check if you find any user on db
-        if(mysqli_num_rows($data) === 1){
+        if($data){
             $row = mysqli_fetch_assoc($data);  
             $_SESSION['user'] = $row;
             header("location: user/index.php");

@@ -32,6 +32,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/src/parsley.css">
     <!-- END parsley css-->
 
+    <!-- BEGIN Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- END Font -->
+
     <!-- BEGIN style css-->
     <link rel="stylesheet" href="../assets/css/style.css">
     <!-- END style css-->
@@ -97,13 +103,13 @@
     <!-- BEGIN SIDEBAR MEMU -->
     <div class="offcanvas offcanvas-start py-5" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">MENU</h5>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel"><i class="bi bi-list me-2"></i>MENU</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body w-100">
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php">Instruments</a>
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Statistic</a>
-          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php">Profile</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.php"><i class="bi bi-calendar-check fs-4 me-4"></i>Instruments</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="statistic.php"><i class="bi bi-graph-up-arrow fs-4 me-4"></i>Statistic</a>
+          <a class="list-group-item list-group-item-action list-group-item-light p-3" href="profile.php"><i class="bi bi-person-square fs-4 me-4"></i>Profile</a>
       </div>
     </div>
     <!-- END SIDEBAR MENU -->
