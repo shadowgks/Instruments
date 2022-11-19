@@ -87,6 +87,7 @@
                       <strong>Failed!</strong>
                         <?php
                           echo $_SESSION['Failed'];
+                          
                           unset($_SESSION['Failed']);
                         ?>
                       </div>

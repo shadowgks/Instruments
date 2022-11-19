@@ -54,9 +54,14 @@
           <a class="navbar-brand" href="../index.php">
             <img src="../assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
           </a>
+          <!-- Btn Menu -->
+          <a class="btn btn-dark rounded-0 d-block d-lg-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
+            MENU
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
           </button>
+          
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
               <li class="nav-item">
@@ -69,11 +74,12 @@
                 <a class="nav-link" href="../index.php#CONTACT_US">Contact US</a>
               </li>
             </ul>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <form class="navbar-nav">
+            
+            <div class="d-flex justify-content-center">
+              <!-- IMG USER -->
+              <div class="rounded-circle" style="background-image: url('../<?php echo $_SESSION['user']['img']?>'); width: 40px; height: 40px; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+              <form class="navbar-nav">
                 <ul class="navbar-nav">
-                  <!-- IMG USER -->
-                  <div class="rounded-circle" style="background-image: url('../<?php echo $_SESSION['user']['img']?>'); width: 40px; height: 40px; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
                   <!-- Dropdown user -->
                   <li class="nav-item dropdown">
                       <!-- session name user -->
@@ -88,7 +94,7 @@
                         </ul>
                   </li>
                   <!-- Btn Menu -->
-                  <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
+                  <a class="btn btn-dark rounded-0 d-none d-lg-block" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
                     MENU
                   </a>
                 </ul>
@@ -140,13 +146,13 @@
               </div>
           <?php endif ?>
           
-          <div class="d-flex justify-content-between">
-            <form class="d-flex w-50" method="GET" data-parsley-validate>
+          <div class="d-sm-flex justify-content-between">
+            <form class="d-flex w-sm-50" method="GET" data-parsley-validate>
               <input class="form-control me-2" type="search" name="search" placeholder="Search">
               <button class="btn btn-outline-warning text-dark" type="submit">Search</button>
             </form>
             <!-- Button trigger modal -->
-            <div class="gap-2">
+            <div class="gap-2 pt-sm-0 pt-3 d-flex justify-content-center">
               <button class="btn btn-dark rounded-0 shadow px-5" onclick="btn_add()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 ADD <i class="bi bi-plus-square"></i></i></button>
             </div>

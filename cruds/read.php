@@ -79,7 +79,7 @@ function signinUser(){
         $data = mysqli_query($conn,$requete);
 
         //Check if you find any user on db
-        if($data){
+        if(mysqli_num_rows($data) === 1){
             $row = mysqli_fetch_assoc($data);  
             $_SESSION['user'] = $row;
             header("location: user/index.php");

@@ -55,9 +55,14 @@
           <a class="navbar-brand" href="../index.php">
             <img src="../assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
           </a>
+          <!-- Btn Menu -->
+          <a class="btn btn-dark rounded-0 d-block d-lg-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
+            MENU
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
           </button>
+          
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
               <li class="nav-item">
@@ -70,11 +75,12 @@
                 <a class="nav-link" href="../index.php#CONTACT_US">Contact US</a>
               </li>
             </ul>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <form class="navbar-nav">
+            
+            <div class="d-flex justify-content-center">
+              <!-- IMG USER -->
+              <div class="rounded-circle" style="background-image: url('../<?php echo $_SESSION['user']['img']?>'); width: 40px; height: 40px; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+              <form class="navbar-nav">
                 <ul class="navbar-nav">
-                  <!-- IMG USER -->
-                  <div class="rounded-circle" style="background-image: url('../<?php echo $_SESSION['user']['img']?>'); width: 40px; height: 40px; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
                   <!-- Dropdown user -->
                   <li class="nav-item dropdown">
                       <!-- session name user -->
@@ -89,7 +95,7 @@
                         </ul>
                   </li>
                   <!-- Btn Menu -->
-                  <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
+                  <a class="btn btn-dark rounded-0 d-none d-lg-block" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
                     MENU
                   </a>
                 </ul>
@@ -133,10 +139,10 @@
 
                             //fetch data
                             $row = mysqli_fetch_assoc($data);
-                            if($row > 0){
+                            if($row["countUsers"] > 0){
                               echo "$row[countUsers]"."+";
                             }else{
-                              echo "0";
+                              echo "0+";
                             }
                           ?>
                         </span>
@@ -158,10 +164,10 @@
 
                           //fetch data
                           $row = mysqli_fetch_assoc($data);
-                          if($row > 0){
+                          if($row["countInstrument"] > 0){
                             echo "$row[countInstrument]"."+";
                           }else{
-                            echo "0";
+                            echo '0+';
                           }
                         ?>
                       </span>
@@ -178,15 +184,15 @@
                     <span>
                       <?php
                           //SQL query
-                          $requete = "SELECT SUM(price) AS 'countPrice' FROM instruments";
+                          $requete = "SELECT SUM(price) AS 'sumPrice' FROM instruments";
                           $data = mysqli_query($conn,$requete);
 
                           //fetch data
                           $row = mysqli_fetch_assoc($data);
-                          if($row > 0){
-                            echo "$row[countPrice]"."+";
+                          if($row['sumPrice'] === null){
+                            echo "0+";
                           }else{
-                            echo "0";
+                            echo "$row[sumPrice]"."+";
                           }
                         ?>
                     </span>
@@ -203,15 +209,15 @@
                       <span>
                         <?php
                             //SQL query
-                            $requete = "SELECT SUM(qnt) AS 'countQnt' FROM instruments";
+                            $requete = "SELECT SUM(qnt) AS 'sumQnt' FROM instruments";
                             $data = mysqli_query($conn,$requete);
 
                             //fetch data
                             $row = mysqli_fetch_assoc($data);
-                            if($row > 0){
-                              echo "$row[countQnt]"."+";
+                            if($row['sumQnt'] === null){
+                              echo "0+";
                             }else{
-                              echo "0";
+                              echo "$row[sumQnt]"."+";
                             }
                           ?>
                       </span>

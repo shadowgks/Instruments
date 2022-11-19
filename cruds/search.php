@@ -15,26 +15,38 @@ function searchInstrument(){
     and   instruments.name LIKE  '%$search%'";
     
     $data = mysqli_query($conn,$requete);
-    while($row = mysqli_fetch_assoc($data)){
+    if(mysqli_num_rows($data) > 0){
+        while($row = mysqli_fetch_assoc($data)){
+            echo '
+            <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
+                    <div class="card shadow">
+                        <img src="../'.$row["img"].'" class="card-img-top" height="330" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">'.$row["name"].'</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">'.$row["NameFammiles"].'</h6>
+                            <p class="card-text text-truncate" title='.$row["description"].'>'.$row["description"].'</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Date: <span class="text-muted">'.$row["date"].'</span></li>
+                            <li class="list-group-item">Quantities: <span class="text-muted">'.$row["qnt"].'</span></li>
+                            <li class="list-group-item">Price: <span class="text-muted">'.$row["price"].'DH</span></li>
+                        </ul>
+                        <div class="p-2 d-flex justify-content-between">
+                            <button class="btn btn-dark p-2 w-100 me-3"><i class="fa-solid fa-cart-shopping"></i></button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="btn_edit('.$row["id"].')" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
+                    </div>
+            </div>';
+        }
+    }else{
         echo '
-        <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
-                <div class="card shadow">
-                    <img src="../'.$row["img"].'" class="card-img-top" height="330" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">'.$row["name"].'</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">'.$row["NameFammiles"].'</h6>
-                        <p class="card-text text-truncate" title='.$row["description"].'>'.$row["description"].'</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Date: <span class="text-muted">'.$row["date"].'</span></li>
-                        <li class="list-group-item">Quantities: <span class="text-muted">'.$row["qnt"].'</span></li>
-                        <li class="list-group-item">Price: <span class="text-muted">'.$row["price"].'DH</span></li>
-                    </ul>
-                    <div class="p-2 d-flex justify-content-between">
-                        <button class="btn btn-dark p-2 w-100 me-3"><i class="fa-solid fa-cart-shopping"></i></button>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="btn_edit('.$row["id"].')" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>
-                    </div>
-                </div>
-        </div>';
+        <div class="col-12">
+            <div class="alert alert-warning">
+                <h4 class="alert-heading">Oops!</h4>
+                <hr>
+                <p>This is not found.</p>
+            </div>
+        </div>
+        ';
     }
 }

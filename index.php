@@ -53,6 +53,10 @@
           <a class="navbar-brand" href="index.php">
             <img src="assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
           </a>
+          <!-- Btn Menu -->
+          <a class="btn btn-dark rounded-0 d-block d-lg-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
+            MENU
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -76,11 +80,11 @@
             </div>
             <!-- BEGIN CONDISTION -->
             <?php else: ?>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                <form class="navbar-nav">
+              <div class="d-flex justify-content-center">
+                <!-- IMG USER -->
+                <div class="rounded-circle" style="background-image: url('<?php echo $_SESSION['user']['img']?>'); width: 40px; height: 40px; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+                  <form class="navbar-nav">
                     <ul class="navbar-nav">
-                      <!-- IMG USER -->
-                      <div class="rounded-circle" style="background-image: url('<?php echo $_SESSION['user']['img']?>'); width: 40px; height: 40px; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
                       <!-- Dropdown user -->
                       <li class="nav-item dropdown">
                           <!-- session name user -->
@@ -96,7 +100,7 @@
                             </ul>
                       </li>
                       <!-- Btn Menu -->
-                      <a class="btn btn-dark rounded-0 " data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
+                      <a class="btn btn-dark rounded-0 d-none d-lg-block" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
                         MENU
                       </a>
                     </ul>
