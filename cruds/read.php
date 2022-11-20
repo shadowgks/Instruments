@@ -13,32 +13,32 @@ function getInstruments(){
     where users.id              = '$id_user'";
     $data = mysqli_query($conn,$requete);
     if(mysqli_num_rows($data) > 0){
-        foreach($data as $item){
+        foreach($data as $row){
             echo '
             <div class="col-lg-3 col-md-6 col-sm-6 pb-3"
-            id           = "'.$item["id"].'"
-            title        = "'.$item["name"].'"
-            picture      = "'.$item["img"].'"
-            fammiles-id  = "'.$item["fammille_id"].'"
-            date         = "'.$item["date"].'"
-            qnt          = "'.$item["qnt"].'"
-            price        = "'.$item["price"].'"
-            description  = "'.$item["description"].'">
+            id           = "'.$row["id"].'"
+            title        = "'.$row["name"].'"
+            picture      = "'.$row["img"].'"
+            fammiles-id  = "'.$row["fammille_id"].'"
+            date         = "'.$row["date"].'"
+            qnt          = "'.$row["qnt"].'"
+            price        = "'.$row["price"].'"
+            description  = "'.$row["description"].'">
                     <div class="card shadow">
-                    <div style="background-image: url(../'.$item["img"].'); height: 40vh; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>                        
+                    <div style="background-image: url(../'.$row["img"].'); height: 40vh; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>                        
                         <div class="card-body">
-                            <h5 class="card-title">'.$item["name"].'</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">'.$item["NameFammiles"].'</h6>
-                            <p class="card-text text-truncate" title='.$item["description"].'>'.$item["description"].'</p>
+                            <h5 class="card-title">'.$row["name"].'</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">'.$row["NameFammiles"].'</h6>
+                            <p class="card-text text-truncate" title='.$row["description"].'>'.$row["description"].'</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Date: <span class="text-muted">'.$item["date"].'</span></li>
-                            <li class="list-group-item">Quantities: <span class="text-muted">'.$item["qnt"].'</span></li>
-                            <li class="list-group-item">Price: <span class="text-muted">'.$item["price"].'DH</span></li>
+                            <li class="list-group-item">Date: <span class="text-muted">'.$row["date"].'</span></li>
+                            <li class="list-group-item">Quantities: <span class="text-muted">'.$row["qnt"].'</span></li>
+                            <li class="list-group-item">Price: <span class="text-muted">'.$row["price"].'DH</span></li>
                         </ul>
                         <div class="p-2 d-flex justify-content-between">
                             <button class="btn btn-dark p-2 w-100 me-3"><i class="fa-solid fa-cart-shopping"></i></button>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="btn_edit('.$item["id"].')" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="btn_edit('.$row["id"].')" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></button>
                         </div>
                     </div>
             </div>';

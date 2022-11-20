@@ -16,11 +16,19 @@ function searchInstrument(){
     
     $data = mysqli_query($conn,$requete);
     if(mysqli_num_rows($data) > 0){
-        while($row = mysqli_fetch_assoc($data)){
+        foreach($data as $row){
             echo '
-            <div class="col-lg-3 col-md-6 col-sm-6 pb-3">
+            <div class="col-lg-3 col-md-6 col-sm-6 pb-3"
+            id           = "'.$row["id"].'"
+            title        = "'.$row["name"].'"
+            picture      = "'.$row["img"].'"
+            fammiles-id  = "'.$row["fammille_id"].'"
+            date         = "'.$row["date"].'"
+            qnt          = "'.$row["qnt"].'"
+            price        = "'.$row["price"].'"
+            description  = "'.$row["description"].'">
                     <div class="card shadow">
-                        <img src="../'.$row["img"].'" class="card-img-top" height="330" alt="...">
+                    <div style="background-image: url(../'.$row["img"].'); height: 40vh; background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
                         <div class="card-body">
                             <h5 class="card-title">'.$row["name"].'</h5>
                             <h6 class="card-subtitle mb-2 text-muted">'.$row["NameFammiles"].'</h6>

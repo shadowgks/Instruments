@@ -2,13 +2,13 @@
 const form_instrument = document.forms['form_instrument'];
 
 //Btns model
-var btn_save = document.getElementById("save");
+var btn_save   = document.getElementById("save");
 var btn_update = document.getElementById("update");
 var btn_delete = document.getElementById("delete");
 
 //Btn edite cart
 function btn_edit(id){
-    btn_save.style.display = "none";
+    btn_save.style.display   = "none";
     btn_update.style.display = "block";
     btn_delete.style.display = "block";
 
@@ -24,7 +24,7 @@ function btn_edit(id){
 
 //Btn add cart
 function btn_add(){
-    btn_save.style.display = "block";
+    btn_save.style.display   = "block";
     btn_update.style.display = "none";
     btn_delete.style.display = "none";
 
@@ -32,7 +32,7 @@ function btn_add(){
     form_instrument.reset();
 };
 
-//Modal 2 Confirmer if you user need update or delete
+//Modal 2 Confirmer if user need update or delete
 document.getElementById("delete").addEventListener("click",()=>{
     document.getElementById("save_confirme_m2").setAttribute("name","delete");
 })

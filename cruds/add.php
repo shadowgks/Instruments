@@ -102,7 +102,7 @@ function regestreUser(){
             $data = mysqli_query($conn,$requete);
             if($data){
                 $_SESSION['Success'] = "This Account Has been Created";
-                header("location: Login/register.php");
+                header("location: Login/sign_in.php");
             }else{
                 $_SESSION['Failed'] = "This Account Has been not Created";
                 header("location: Login/register.php");

@@ -1,5 +1,9 @@
 <?php
   include("../scripts.php");
+
+  // BEGIN CONDISTION
+  // CEACK USER IF EXISTING
+  if(!isset($_SESSION['user'])):
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,6 +96,17 @@
                         ?>
                       </div>
                     <?php endif ?>
+
+                    <!-- Mssg Session Success -->
+                  <?php if(isset($_SESSION['Success'])): ?>
+                      <div class="alert alert-primary" role="alert">
+                      <strong>Success!</strong>
+                        <?php
+                          echo $_SESSION['Success'];
+                          unset($_SESSION['Success']);
+                        ?>
+                      </div>
+                    <?php endif ?>
                     
                   <form class="mx-1 mx-md-4" method="POST" action="../scripts.php" enctype="multipart/form-data" data-parsley-validate>
                     <div class="d-flex flex-row align-items-center mb-4">
@@ -162,3 +177,8 @@
     <!-- =============================================================== -->
 </body>
 </html>
+<?php 
+//USER IF EXISTING
+else: header("location: ../user"); 
+endif;
+//END CONDISTION
