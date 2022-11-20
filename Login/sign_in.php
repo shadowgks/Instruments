@@ -43,33 +43,33 @@
     <!-- BEGIN HEADER -->
     <!-- BEGIN NAVBAR -->
     <nav class="navbar navbar-expand-lg" style="background-color: #FAF2EE;">
-      <div class="container-fluid px-lg-5">
-        <a class="navbar-brand" href="../index.php">
-          <img src="../assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../index.php#ABOUT_US">About US</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../index.php#CONTACT_US">Contact US</a>
-            </li>
-          </ul>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-              <a href="sign_in.php" class="btn text-dark border-secondary rounded-0 px-4">Sign In</a>
-              <a href="register.php" class="btn btn-dark rounded-0 px-4">Register</a>
+        <div class="container-fluid px-lg-5">
+          <a class="navbar-brand" href="../index.php">
+            <img src="../assets/img/logo/Pink Music Composer Logo (1).png" height="70" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../index.php#ABOUT_US">About US</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../index.php#CONTACT_US">Contact US</a>
+              </li>
+            </ul>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <a href="sign_in.php" class="btn text-dark border-secondary rounded-0 px-4">Sign In</a>
+                <a href="register.php" class="btn btn-dark rounded-0 px-4">Register</a>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-  <!-- END NAVBAR -->
+      </nav>
+    <!-- END NAVBAR -->
 
     <!-- BEGIN Signup -->
     <section class="py-5 ">
