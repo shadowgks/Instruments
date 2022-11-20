@@ -80,7 +80,7 @@ function signinUser(){
 
         //Check if you find any user on db
         if(mysqli_num_rows($data) === 1){
-            $row = mysqli_fetch_assoc($data);  
+            $row = mysqli_fetch_assoc($data);
             $_SESSION['user'] = $row;
             header("location: user/index.php");
         }else{

@@ -249,6 +249,5 @@
 <?php 
 //USER IF NOT EXISTING
 else: header("location: ../Login/sign_in.php"); 
-die();
 endif;
 //END CONDISTION

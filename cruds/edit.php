@@ -98,18 +98,26 @@ function updateProfile(){
         $_SESSION['Failed'] = "Fill IN THE BLANKS AS APPROPRIATE!";
         header("location: user/profile.php");
     }else{
-        //Added instruments
-        $requete = "UPDATE users 
+        //Update profile
+        $requete_UPDATE = "UPDATE users 
         SET   `name`        = '$name', 
               `email`       = '$email', 
               `password`    = '$password', 
               `img`         = '$distination_file'
         WHERE `id`          =  $id_user"; 
 
-        //SQL QUERY
-        $data = mysqli_query($conn,$requete);
-        $row = mysqli_fetch_assoc($data);
+        //SQL QUERY $requete_UPDATE
+        mysqli_query($conn,$requete_UPDATE);
+
+        //Select data profile
+        $requete_SELECT ="SELECT * FROM users
+        WHERE id = $id_user";
+        $data = mysqli_query($conn,$requete_SELECT);
+
         if($data){
+            //Fetch data user
+            $row = mysqli_fetch_assoc($data);
+            unset($_SESSION['user']);
             $_SESSION['user'] = $row;
             $_SESSION['Success'] = "Updated Your Profile";
             header("location: user/profile.php");
