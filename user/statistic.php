@@ -2,8 +2,10 @@
   include("../scripts.php");
 
   // BEGIN CONDISTION
-  // CEACK USER IF EXISTING
-  if(isset($_SESSION['user'])):
+  // CEACK USER IF NOT EXISTING
+  if(!isset($_SESSION['user'])){
+    header("location: ../Login/sign_in.php"); 
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -161,8 +163,11 @@
                     <h2 class="text-right"><i class="bi bi-music-note-list f-left"></i>
                       <span>
                         <?php
+                          $id_user = $_SESSION["user"]["id"];
+                        ?>
+                        <?php 
                           //SQL query
-                          $requete = "SELECT count(*) AS 'countInstrument' FROM instruments";
+                          $requete = "SELECT count(*) AS 'countInstrument' FROM instruments WHERE `user_id` = $id_user";
                           $data = mysqli_query($conn,$requete);
 
                           //fetch data
@@ -187,15 +192,15 @@
                     <span>
                       <?php
                           //SQL query
-                          $requete = "SELECT SUM(price) AS 'sumPrice' FROM instruments";
+                          $requete = "SELECT SUM(price * qnt) AS 'sumPrice' FROM instruments WHERE `user_id` = $id_user";
                           $data = mysqli_query($conn,$requete);
 
                           //fetch data
                           $row = mysqli_fetch_assoc($data);
-                          if($row['sumPrice'] === null){
-                            echo "0+";
-                          }else{
+                          if($row['sumPrice'] !== null){
                             echo "$row[sumPrice]"."+";
+                          }else{
+                            echo "0+";
                           }
                         ?>
                     </span>
@@ -212,15 +217,15 @@
                       <span>
                         <?php
                             //SQL query
-                            $requete = "SELECT SUM(qnt) AS 'sumQnt' FROM instruments";
+                            $requete = "SELECT SUM(qnt) AS 'sumQnt' FROM instruments WHERE `user_id` = $id_user";
                             $data = mysqli_query($conn,$requete);
 
                             //fetch data
                             $row = mysqli_fetch_assoc($data);
-                            if($row['sumQnt'] === null){
-                              echo "0+";
-                            }else{
+                            if($row['sumQnt'] !== null){
                               echo "$row[sumQnt]"."+";
+                            }else{
+                              echo "0+";
                             }
                           ?>
                       </span>
@@ -277,8 +282,4 @@
     <!-- =============================================================== -->
 </body>
 </html>
-<?php 
-//USER IF NOT EXISTING
-else: header("location: ../Login/sign_in.php"); 
-endif;
-//END CONDISTION
+

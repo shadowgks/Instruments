@@ -8,12 +8,11 @@ function saveInstrument(){
     $title                = str_replace("'","\'",$_POST['title']);
     //Upload img
     //-----------------------------------------------
-    $picture_name         = $_FILES['picture']['name'];
     $tmp_picture_name     = $_FILES['picture']['tmp_name'];
     //unique id img
-    $new_unique_name      = uniqid('',true).$picture_name;
+    $new_unique_name      = uniqid($_SESSION['user']['name'],true);
     //check picture
-    if(!$_FILES['picture']['name'] == ""){
+    if(!empty($_FILES['picture']['name'])){
         $distination_file = 'assets/img/upload/instruments/'.$new_unique_name;
     }else{
         $distination_file = 'assets/img/upload/instruments/default/default_picture.png';
@@ -66,10 +65,9 @@ function regestreUser(){
     $password_confirme    = $_POST['password-confirme'];
     //Upload img
     //-----------------------------------------------
-    $picture_name         = $_FILES['picture']['name'];
     $tmp_picture_name     = $_FILES['picture']['tmp_name'];
     //unique id img
-    $new_unique_name      = uniqid('',true).$picture_name;
+    $new_unique_name      = uniqid($_SESSION['user']['name'],true);
     //check picture
     if(!$_FILES['picture']['name'] == ""){
         $distination_file = 'assets/img/upload/users/'.$new_unique_name;

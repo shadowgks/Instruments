@@ -9,10 +9,9 @@ function updateInstrument(){
     $title            = $_POST['title'];
     //Upload img
     //-----------------------------------------------
-    $picture_name     = $_FILES['picture']['name'];
     $tmp_picture_name = $_FILES['picture']['tmp_name'];
     //unique id img
-    $new_unique_name= uniqid('',true).$picture_name;
+    $new_unique_name  = uniqid($_SESSION['user']['name'],true);
     //check picture
     if(!$_FILES['picture']['name'] == ""){
         $distination_file = 'assets/img/upload/instruments/'.$new_unique_name;
@@ -74,10 +73,9 @@ function updateProfile(){
     $password_confirme    = $_POST['password-confirme'];
     //Upload img
     //-----------------------------------------------
-    $picture_name     = $_FILES['picture']['name'];
     $tmp_picture_name = $_FILES['picture']['tmp_name'];
     //unique id img
-    $new_unique_name= uniqid('',true).$picture_name;
+    $new_unique_name= uniqid('',true);
     //check picture
     if(!$_FILES['picture']['name'] == ""){
         $distination_file = 'assets/img/upload/users/'.$new_unique_name;

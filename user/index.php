@@ -2,8 +2,10 @@
   include("../scripts.php");
 
   // BEGIN CONDISTION
-  // CEACK USER IF EXISTING
-  if(isset($_SESSION['user'])):
+  // CEACK USER IF NOT EXISTING
+  if(!isset($_SESSION['user'])){
+    header("location: ../Login/sign_in.php"); 
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -172,7 +174,7 @@
             if(!isset($_GET['search'])){
                 getInstruments();
             }else{
-              searchInstrument();
+                searchInstrument();
             }
            ?> 
         </div>
@@ -225,7 +227,7 @@
             <div class="mb-3 row">
               <div class="mb-3 col-6">
                 <label for="exampleInputdate" class="form-label">Price</label>
-                <input type="number" name="price" class="form-control" id="price" data-parsley-trigger="keyup" data-parsley-min="0" required>
+                <input type="number" name="price" class="form-control" id="price" data-parsley-trigger="keyup" data-parsley-min="0" step="0.01" required>
               </div>
               <div class="mb-3 col-6">
                 <label for="exampleInputdate" class="form-label">Quantities</label>
@@ -314,11 +316,8 @@
     <!-- =============================================================== -->
 </body>
 </html>
-<?php 
-//USER IF NOT EXISTING
-else: header("location: ../Login/sign_in.php"); 
-endif;
-//END CONDISTION
+
+
 
 
 

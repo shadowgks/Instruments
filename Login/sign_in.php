@@ -2,8 +2,10 @@
   include("../scripts.php");
 
   // BEGIN CONDISTION
-  // CEACK USER IF EXISTING
-  if(!isset($_SESSION['user'])):
+  // CEACK USER IF NOT EXISTING
+  if(isset($_SESSION['user'])){
+    header("location: ../user"); 
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -177,8 +179,3 @@
     <!-- =============================================================== -->
 </body>
 </html>
-<?php 
-//USER IF EXISTING
-else: header("location: ../user"); 
-endif;
-//END CONDISTION

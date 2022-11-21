@@ -2,8 +2,10 @@
   include("../scripts.php");
 
   // BEGIN CONDISTION
-  // CEACK USER IF EXISTING
-  if(isset($_SESSION['user'])):
+  // CEACK USER IF NOT EXISTING
+  if(!isset($_SESSION['user'])){
+    header("location: ../Login/sign_in.php"); 
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -246,8 +248,4 @@
     <!-- =============================================================== -->
 </body>
 </html>
-<?php 
-//USER IF NOT EXISTING
-else: header("location: ../Login/sign_in.php"); 
-endif;
-//END CONDISTION
+
