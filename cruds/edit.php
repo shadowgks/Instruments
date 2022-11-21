@@ -11,7 +11,7 @@ function updateInstrument(){
     //-----------------------------------------------
     $tmp_picture_name = $_FILES['picture']['tmp_name'];
     //unique id img
-    $new_unique_name  = uniqid($_SESSION['user']['name'],true);
+    $new_unique_name  = uniqid(".",true);
     //check picture
     if(!$_FILES['picture']['name'] == ""){
         $distination_file = 'assets/img/upload/instruments/'.$new_unique_name;
@@ -75,7 +75,7 @@ function updateProfile(){
     //-----------------------------------------------
     $tmp_picture_name = $_FILES['picture']['tmp_name'];
     //unique id img
-    $new_unique_name= uniqid('',true);
+    $new_unique_name  = uniqid(".",true);
     //check picture
     if(!$_FILES['picture']['name'] == ""){
         $distination_file = 'assets/img/upload/users/'.$new_unique_name;
