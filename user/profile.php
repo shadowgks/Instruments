@@ -173,22 +173,6 @@
                         <input type="email" value="<?php echo $_SESSION['user']['email']?>" name="email" id="form3Example3c" class="form-control" data-parsley-trigger="keyup" data-parsley-pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$" required/>
                       </div>
                     </div>
-  
-                    <div class="d-flex align-items-center mb-4">
-                      <i class="fas fa-lock me-3 mt-4"></i>
-                      <div class="form-outline flex-fill">
-                        <label class="form-label" for="form3Example4c">Password</label>
-                        <input type="password" value="<?php echo $_SESSION['user']['password']?>" name="password" id="password" class="form-control" data-parsley-trigger="keyup" data-parsley-minlength="8" required/>
-                      </div>
-                    </div>
-
-                    <div class="d-flex align-items-center mb-4">
-                      <i class="fas fa-key me-3 mt-4"></i>
-                      <div class="form-outline flex-fill">
-                        <label class="form-label" for="form3Example4cd">Repeat Your Password</label>
-                        <input type="password" value="<?php echo $_SESSION['user']['password']?>" name="password-confirme" id="password-confirme" class="form-control" data-parsley-trigger="keyup" data-parsley-equalto="#password" data-parsley-minlength="8" required/>
-                      </div>
-                    </div>
 
                     <div class="d-flex align-items-center mb-4">
                       <i class="bi bi-image me-3 mt-4"></i>

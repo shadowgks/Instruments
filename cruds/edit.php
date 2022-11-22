@@ -90,9 +90,7 @@ function updateProfile(){
 
     //Check inputs form if empty
     if(empty($name)
-    || empty($email)
-    || empty($password)
-    || empty($password_confirme) || $password_confirme !== $password){
+    || empty($email)){
         $_SESSION['Failed'] = "Fill IN THE BLANKS AS APPROPRIATE!";
         header("location: user/profile.php");
     }else{
@@ -100,7 +98,6 @@ function updateProfile(){
         $requete_UPDATE = "UPDATE users 
         SET   `name`        = '$name', 
               `email`       = '$email', 
-              `password`    = '$password', 
               `img`         = '$distination_file'
         WHERE `id`          =  $id_user"; 
 

@@ -63,29 +63,36 @@ function signinUser(){
     global $conn;
 
     //Get data from form
-    $email       = $_POST['email'];
-    $password    = $_POST['password'];
+    $email           = $_POST['email'];
+    $password        = $_POST['password'];
 
     //Check inputs form if empty
     if(empty($email) 
     || empty($password)){
         $_SESSION['Failed'] = "Fill in the blanks as appropriate!";
-        header("location: Login/register.php");
+        header("location: Login/sign_in.php");
     }else{
         //Sql Query
         $requete = "SELECT * FROM users 
-        WHERE email = '$email' 
-        and password = '$password'";
+        WHERE email = '$email'";
         $data = mysqli_query($conn,$requete);
-
-        //Check if you find any user on db
-        if(mysqli_num_rows($data) === 1){
-            $row = mysqli_fetch_assoc($data);
-            $_SESSION['user'] = $row;
-            header("location: user/index.php");
-        }else{
-            $_SESSION['Failed'] = "Email or Password not correct!";
+        if(mysqli_num_rows($data) === 0){
+            $_SESSION['Failed'] = "Email incorrect!";
             header("location: Login/sign_in.php");
+        }else{
+            //Get Data
+            $res  = mysqli_fetch_assoc($data);
+            //password verfiy
+            $password_verfiy = password_verify($password, $res['password']);
+            if($password_verfiy){
+                $_SESSION['user'] = $res;
+                header("location: user/index.php");
+            }else{
+                $_SESSION['Failed'] = "Password incorrect!";
+                header("location: Login/sign_in.php");
+            }
         }
+
+        
     }   
 }

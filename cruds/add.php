@@ -63,6 +63,7 @@ function regestreUser(){
     $email                = $_POST['email'];
     $password             = $_POST['password'];
     $password_confirme    = $_POST['password-confirme'];
+    $password_hash        = password_hash($password, PASSWORD_DEFAULT);
     //Upload img
     //-----------------------------------------------
     $tmp_picture_name     = $_FILES['picture']['tmp_name'];
@@ -96,7 +97,7 @@ function regestreUser(){
         }else{
             //Sql Query
             $requete = "INSERT INTO users(name, email, password, img, dateEntre) 
-            VALUES ('$name','$email','$password','$distination_file',NOW())";
+            VALUES ('$name','$email','$password_hash','$distination_file',NOW())";
             $data = mysqli_query($conn,$requete);
             if($data){
                 $_SESSION['Success'] = "This Account Has been Created";
