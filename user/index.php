@@ -171,12 +171,12 @@
         <div class="row">
           <!-- Show info instruments -->
           <?php
-            if(!isset($_GET['search'])){
-                getInstruments();
+            if(isset($_GET['search'])){
+              searchInstrument();
             }else{
-                searchInstrument();
+              getInstruments();
             }
-           ?> 
+          ?> 
         </div>
 	    </div>
     </section>

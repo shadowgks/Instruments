@@ -1,5 +1,5 @@
 //Get form
-const form_instrument = document.forms['form_instrument'];
+var form_instrument = document.forms['form_instrument'];
 
 //Btns model
 var btn_save   = document.getElementById("save");

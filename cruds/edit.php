@@ -69,8 +69,6 @@ function updateProfile(){
     $id_user              = $_SESSION['user']['id'];
     $name                 = $_POST['yourname'];
     $email                = $_POST['email'];
-    $password             = $_POST['password'];
-    $password_confirme    = $_POST['password-confirme'];
     //Upload img
     //-----------------------------------------------
     $tmp_picture_name = $_FILES['picture']['tmp_name'];

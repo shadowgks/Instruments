@@ -20,3 +20,13 @@ function deleteInstrument(){
         header("location: user/index.php");
     }
 }
+
+
+//Check if user went to sign out
+if(isset($_GET['sign_out'])){
+    //unset & destroy session user
+    session_destroy();
+
+    //page home Redirect to page sign-in
+    header("location: index.php");
+};

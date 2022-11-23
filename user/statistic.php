@@ -200,7 +200,7 @@
                           if($row['sumPrice'] !== null){
                             echo "$row[sumPrice]"."+";
                           }else{
-                            echo "0+";
+                            echo "0.00+";
                           }
                         ?>
                     </span>
