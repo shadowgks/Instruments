@@ -81,7 +81,7 @@ function signinUser(){
             header("location: Login/sign_in.php");
         }else{
             //Get Data
-            $res  = mysqli_fetch_assoc($data);
+            $res = mysqli_fetch_assoc($data);
             //password verfiy
             $password_verfiy = password_verify($password, $res['password']);
             if($password_verfiy){

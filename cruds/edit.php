@@ -5,7 +5,7 @@ function updateInstrument(){
     global $conn;
 
     //Get data from form
-    $id_instrument    = intval($_POST['id_instrument']);
+    $id_instrument    = $_POST['id_instrument'];
     $title            = $_POST['title'];
     //Upload img
     //-----------------------------------------------
@@ -75,7 +75,7 @@ function updateProfile(){
     //unique id img
     $new_unique_name  = uniqid(".",true);
     //check picture
-    if(!$_FILES['picture']['name'] == ""){
+    if(!empty($_FILES['picture']['name'])){
         $distination_file = 'assets/img/upload/users/'.$new_unique_name;
     }else{
         $get_img = mysqli_query($conn,"SELECT img FROM users WHERE id = $id_user");

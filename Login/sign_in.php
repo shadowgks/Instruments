@@ -2,7 +2,7 @@
   include("../scripts.php");
 
   // BEGIN CONDISTION
-  // CEACK USER IF NOT EXISTING
+  // ChEACK USER IF EXISTING
   if(isset($_SESSION['user'])){
     header("location: ../user"); 
   }
