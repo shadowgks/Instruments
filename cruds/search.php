@@ -2,6 +2,7 @@
 
 function searchInstrument(){
     global $conn;
+    
     //Get data from form
     $search = $_GET["search"];
     $id_user = $_SESSION['user']['id'];
@@ -18,7 +19,7 @@ function searchInstrument(){
     if(mysqli_num_rows($data) > 0){
         foreach($data as $row){
             echo '
-            <div class="col-lg-3 col-md-6 col-sm-6 pb-3"
+            <div class="col-sm-12 col-md-6 col-lg-3 pb-3"
             id           = "'.$row["id"].'"
             title        = "'.$row["name"].'"
             picture      = "'.$row["img"].'"
